@@ -1,0 +1,47 @@
+---
+interface Props {
+  date?: Date | string;
+  categories?: string[];
+  tags?: string[];
+}
+
+const { date, categories, tags } = Astro.props;
+
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+  : null;
+---
+
+<div class="flex flex-wrap gap-2 items-center">
+  {formattedDate && <span>{formattedDate}</span>}
+  {
+    categories && categories.length > 0 && (
+      <span>
+        /
+        {categories.map((cat, index) => (
+          <>
+            <a href={`/categories/${cat.toLowerCase()}`}>{cat}</a>
+            {index < categories.length - 1 && ", "}
+          </>
+        ))}
+      </span>
+    )
+  }
+  {
+    tags && tags.length > 0 && (
+      <span>
+        /
+        {tags.map((tag, index) => (
+          <>
+            <a href={`/tags/${tag.toLowerCase()}`}>{tag}</a>
+            {index < tags.length - 1 && ", "}
+          </>
+        ))}
+      </span>
+    )
+  }
+</div>

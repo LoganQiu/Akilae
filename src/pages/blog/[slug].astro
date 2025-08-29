@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import SingleLayout from '../../layouts/SingleLayout.astro';
+import Meta from '../../components/Meta.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  const sortedPosts = blogEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  
+  return sortedPosts.map((entry, index) => {
+    const prevPost = index > 0 ? {
+      url: `/blog/${sortedPosts[index - 1].slug}/`,
+      title: sortedPosts[index - 1].data.title
+    } : null;
+    
+    const nextPost = index < sortedPosts.length - 1 ? {
+      url: `/blog/${sortedPosts[index + 1].slug}/`,
+      title: sortedPosts[index + 1].data.title
+    } : null;
+    
+    return {
+      params: { slug: entry.slug },
+      props: { entry, prevPost, nextPost },
+    };
+  });
+}
+
+const { entry, prevPost, nextPost } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<SingleLayout 
+  title={entry.data.title}
+  subtitle={entry.data.subtitle}
+  description={entry.data.subtitle}
+  keywords={entry.data.tags}
+  prevPost={prevPost}
+  nextPost={nextPost}
+>
+  <article>
+    <h1 class="title">{entry.data.title}</h1>
+    {entry.data.subtitle && <h2 class="subtitle">{entry.data.subtitle}</h2>}
+    <div class="single">
+      <div class="meta-line small">
+        <Meta 
+          date={entry.data.date} 
+          categories={entry.data.categories}
+          tags={entry.data.tags}
+        />
+      </div>
+      <div class="main">
+        <Content />
+      </div>
+    </div>
+  </article>
+</SingleLayout>

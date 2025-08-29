@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.3"
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.5.1",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^5.13.3",
+    "katex": "^0.16.22",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
+    "tailwindcss": "^4.1.12"
   }
 }

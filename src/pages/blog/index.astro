@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import ListLayout from '../../layouts/ListLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return !data.draft;
+});
+
+const sortedPosts = posts.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<ListLayout title="Blog">
+  <h1 class="text-3xl font-bold mb-6">Blog</h1>
+  <div class="space-y-4">
+    {sortedPosts.map((post) => (
+      <BlogCard post={post} showSubtitle={true} />
+    ))}
+  </div>
+</ListLayout>

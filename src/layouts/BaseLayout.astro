@@ -1,0 +1,89 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import "../styles/tailwind.css";
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  keywords?: string[];
+  class?: string;
+  pageType?: 'home' | 'single' | 'list';
+}
+
+const { 
+  title = 'A Hugo theme inspired by paged.js',
+  subtitle, 
+  description = 'A website built through Astro with the hugo-paged theme.',
+  keywords = [],
+  class: pageClass = '',
+  pageType = 'single'
+} = Astro.props;
+
+const siteTitle = 'A Hugo theme inspired by paged.js';
+const pageTitle = title === siteTitle ? title : `${title}${subtitle ? ` - ${subtitle}` : ''} - ${siteTitle}`;
+
+const currentPath = Astro.url.pathname;
+const section = currentPath.split('/')[1] || '';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content={pageType === 'home' ? 'website' : 'article'} />
+    <meta name="twitter:card" content="summary" />
+    <meta property="description" content={description} />
+    <meta property="og:description" content={description} />
+    {keywords.length > 0 && <meta property="keywords" content={keywords.join(', ')} />}
+    <link rel="alternate" type="application/rss+xml" title={siteTitle} href="/rss.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+  </head>
+  <body>
+    <Header />
+    
+    <main class="flex-grow max-w-app mx-auto px-4 py-8 w-full">
+      <slot />
+    </main>
+    
+    <Footer />
+    
+    <script>
+      const html = document.documentElement;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      // 初始化：检查localStorage或跟随系统
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') {
+        html.classList.add('dark');
+      } else if (storedTheme === 'light') {
+        html.classList.remove('dark');
+      } else if (prefersDark.matches) {
+        html.classList.add('dark');
+      }
+      
+      // 按钮点击：切换并保存到localStorage
+      document.getElementById("toggle-theme")?.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      });
+      
+      // 如果系统切换了且用户没有手动设置，自动跟随
+      prefersDark.addEventListener('change', (e) => {
+        const storedTheme = localStorage.getItem('theme');
+        if (!storedTheme) {
+          if (e.matches) {
+            html.classList.add('dark');
+          } else {
+            html.classList.remove('dark');
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+---
+import SingleLayout from '../layouts/SingleLayout.astro';
+---
+
+<SingleLayout title="Search">
+  <h1 class="title">Search</h1>
+  
+  <div class="main">
+    <p>Search functionality requires JavaScript and a search index. This can be implemented using libraries like Fuse.js or Lunr.js.</p>
+    
+    <input type="text" id="search-input" placeholder="Type to search..." style="width: 100%; padding: 0.5em; font-size: 1.1em;">
+    
+    <div id="search-results"></div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = (e.target as HTMLInputElement).value;
+        if (query.length < 2) {
+          if (searchResults) searchResults.innerHTML = '';
+          return;
+        }
+        
+        if (searchResults) {
+          searchResults.innerHTML = '<p>Search functionality would show results here.</p>';
+        }
+      });
+    }
+  </script>
+</SingleLayout>

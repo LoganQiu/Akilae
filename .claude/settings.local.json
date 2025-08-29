@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/loganqiu/code/**)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm run:*)",
+      "Bash(rm:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/Users/loganqiu/code/hugo-paged/static/css"
+    ]
+  }
+}

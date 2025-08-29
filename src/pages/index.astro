@@ -1,11 +1,34 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout pageType="home">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">A Hugo theme inspired by paged.js</h1>
+    
+    <p class="mb-4">This is an Astro version of the hugo-paged theme. It features a clean, minimalist design inspired by paged.js for creating beautiful documents and blogs.</p>
+    
+    <h2 class="text-2xl font-semibold mt-8 mb-4">Features</h2>
+    
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>Clean and minimalist design</li>
+      <li>Support for blog posts</li>
+      <li>Categories and tags</li>
+      <li>Search functionality</li>
+      <li>RSS feed support</li>
+      <li>Responsive layout</li>
+    </ul>
+    
+    <h2 class="text-2xl font-semibold mt-8 mb-4">Getting Started</h2>
+    
+    <p class="mb-4">Browse the <a href="/blog" class="text-accent hover:text-accent/80">blog</a> for example content, or check out the <a href="/archives" class="text-accent hover:text-accent/80">archives</a> to see all posts.</p>
+    
+    <h2 class="text-2xl font-semibold mt-8 mb-4">Links</h2>
+    
+    <ul class="list-disc list-inside space-y-1">
+      <li><a href="https://github.com/yihui/hugo-paged" class="text-accent hover:text-accent/80">Original Hugo theme</a></li>
+      <li><a href="https://pagedjs.org/" class="text-accent hover:text-accent/80">Paged.js</a></li>
+      <li><a href="https://astro.build/" class="text-accent hover:text-accent/80">Astro</a></li>
+    </ul>
+  </div>
+</BaseLayout>

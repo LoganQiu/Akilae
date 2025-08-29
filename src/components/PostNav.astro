@@ -1,0 +1,30 @@
+---
+export interface Props {
+  prev?: {
+    url: string;
+    title: string;
+  };
+  next?: {
+    url: string;
+    title: string;
+  };
+}
+
+const { prev, next } = Astro.props;
+---
+
+<hr class="mt-8 pt-4" />
+{(prev || next) && (
+  <nav class="flex justify-between pt=4 text-sm">
+    {prev && (
+      <span>
+        |&larr; <a href={prev.url} class="text-muted">{prev.title}</a>
+      </span>
+    )}
+    {next && (
+      <span class="ml-auto">
+        <a href={next.url} class="text-muted">{next.title}</a> &rarr;|
+      </span>
+    )}
+  </nav>
+)}

@@ -1,0 +1,28 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PostNav from '../components/PostNav.astro';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  keywords?: string[];
+  prevPost?: any;
+  nextPost?: any;
+}
+
+const { title, subtitle, description, keywords, prevPost, nextPost } = Astro.props;
+---
+
+<BaseLayout 
+  title={title} 
+  subtitle={subtitle} 
+  description={description} 
+  keywords={keywords}
+  pageType="single"
+>
+  <div class="max-w-4xl mx-auto">
+    <slot />
+    {(prevPost || nextPost) && <PostNav prev={prevPost} next={nextPost} />}
+  </div>
+</BaseLayout>

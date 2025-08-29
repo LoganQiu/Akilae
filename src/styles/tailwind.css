@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  html.light {
+    --background: #fdfdfd;
+    --foreground: #282728;
+    --accent: #2e00d2;
+    --muted: #afafaf;
+    --border: #1a0079;
+  }
+
+  html.dark {
+    --background: #0e1118;
+    --foreground: #eaedf3;
+    --accent: #ff6b01;
+    --muted: #4c546c;
+    --border: #ab4b08;
+  }
+
+  @theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-accent: var(--accent);
+    --color-muted: var(--muted);
+    --color-border: var(--border);
+  }
+  
+  html {
+    @apply overflow-y-scroll scroll-smooth;
+  }
+  body {
+    @apply min-h-svh flex-col font-serif transition-colors;
+  }
+  a {
+    @apply text-foreground hover:text-accent;
+  }
+  hr {
+    @apply border-border;
+  }
+  ul {
+    @apply overflow-x-clip;
+  }
+  li {
+    @apply marker:text-accent;
+  }
+  table {
+    th,
+    td {
+      @apply border border-border p-2;
+    }
+    th {
+      @apply py-1.5;
+    }
+    code {
+      @apply break-all sm:break-normal;
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  th {
+    @apply mb-3 text-foreground;
+  }
+  h3 {
+    @apply italic;
+  }
+  p,
+  strong,
+  ol,
+  ul,
+  figcaption,
+  table,
+  code {
+    @apply text-foreground;
+  }
+}
+
+@layer utilities {
+  .max-w-app {
+    @apply max-w-3xl;
+  }
+  /* Katex text color */
+  .katex-display {
+    @apply text-foreground;
+  }
+}

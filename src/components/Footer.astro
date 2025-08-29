@@ -1,0 +1,15 @@
+---
+const currentPath = Astro.url.pathname;
+const year = new Date().getFullYear();
+---
+
+<footer class="max-w-app mx-auto px-4 mt-8 py-4">
+  <hr class="mb-4" />
+  <div class="flex justify-between">
+    <span>&copy; <a href="https://yihui.org">Yihui Xie</a> {year}</span>
+    <div class="flex gap-4">
+      <a href="/categories">Categories</a>
+      <a href="/tags">Tags</a>
+    </div>
+  </div>
+</footer>

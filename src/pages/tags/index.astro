@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import ListLayout from '../../layouts/ListLayout.astro';
+
+const posts = await getCollection('blog');
+const tags = new Map<string, number>();
+
+posts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    tags.set(tag, (tags.get(tag) || 0) + 1);
+  });
+});
+
+const sortedTags = Array.from(tags.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+---
+
+<ListLayout title="Tags">
+  <h1 class="title">Tags</h1>
+  <div class="main terms">
+    <ul>
+      {sortedTags.map(([tag, count]) => (
+        <li>
+          <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>
+            {tag}
+          </a>
+          <span class="small"> ({count})</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</ListLayout>
