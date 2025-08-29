@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @layer base {
   :root,
@@ -6,7 +7,7 @@
     --background: #fdfdfd;
     --foreground: #282728;
     --accent: #2e00d2;
-    --muted: #afafaf;
+    --muted: #6e6e6e;
     --border: #1a0079;
   }
 
@@ -25,64 +26,89 @@
     --color-muted: var(--muted);
     --color-border: var(--border);
   }
-  
+
   html {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply min-h-svh flex-col font-serif transition-colors;
+    @apply min-h-svh flex-col font-serif bg-background text-foreground transition-colors;
   }
   a {
-    @apply text-foreground hover:text-accent;
+    @apply break-words text-foreground decoration-dashed underline-offset-4 hover:text-accent;
   }
   hr {
     @apply border-border;
   }
-  ul {
-    @apply overflow-x-clip;
-  }
-  li {
-    @apply marker:text-accent;
-  }
+
   table {
-    th,
-    td {
+    @apply my-6 text-sm;
+    th, td {
       @apply border border-border p-2;
     }
-    th {
-      @apply py-1.5;
-    }
     code {
-      @apply break-all sm:break-normal;
+      @apply text-xs break-all sm:break-normal;
     }
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  th {
-    @apply mb-3 text-foreground;
+
+  h1 {
+    @apply text-3xl mb-3 font-bold;
+  }
+  h2 {
+    @apply text-2xl mb-3 font-bold border-b;;
   }
   h3 {
-    @apply italic;
+    @apply text-xl mb-3 font-bold italic;
   }
-  p,
-  strong,
-  ol,
-  ul,
-  figcaption,
-  table,
+  h4 {
+    @apply text-lg mb-3;
+  }
+  p {
+    @apply my-5 leading-6;
+  }
   code {
-    @apply text-foreground;
+    @apply bg-muted/10 rounded p-1 text-sm;
   }
+
+  ul {
+    @apply list-disc pl-6 my-4;
+  }
+  ul ul {
+    @apply list-[circle];
+  }
+  ul ul ul {
+    @apply list-[square];
+  }
+  ol {
+    @apply list-decimal pl-6 my-4;
+  }
+  ol ol {
+    @apply list-[lower-alpha];
+  }
+  ol ol ol {
+    @apply list-[lower-roman];
+  }
+  li {
+    @apply my-2;
+  }
+  ul > li::marker,
+  ol > li::marker {
+    @apply text-accent;
+  }
+}
+
+@layer components {
 }
 
 @layer utilities {
   .max-w-app {
     @apply max-w-3xl;
   }
-  /* Katex text color */
+
   .katex-display {
     @apply text-foreground;
+  }
+
+  .active {
+    @apply border-b-[5px] border-solid -mb-[5px];
   }
 }

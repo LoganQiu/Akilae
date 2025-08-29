@@ -7,41 +7,53 @@ interface Props {
 
 const { date, categories, tags } = Astro.props;
 
-const formattedDate = date
-  ? new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-  : null;
+const formattedDate =
+  date instanceof Date
+    ? date.toISOString().slice(0, 10)
+    : date ?? null;
 ---
 
-<div class="flex flex-wrap gap-2 items-center">
-  {formattedDate && <span>{formattedDate}</span>}
-  {
-    categories && categories.length > 0 && (
-      <span>
-        /
-        {categories.map((cat, index) => (
-          <>
-            <a href={`/categories/${cat.toLowerCase()}`}>{cat}</a>
-            {index < categories.length - 1 && ", "}
-          </>
-        ))}
-      </span>
-    )
-  }
-  {
-    tags && tags.length > 0 && (
-      <span>
-        /
-        {tags.map((tag, index) => (
-          <>
-            <a href={`/tags/${tag.toLowerCase()}`}>{tag}</a>
-            {index < tags.length - 1 && ", "}
-          </>
-        ))}
-      </span>
-    )
-  }
+<div class="flex justify-between items-center text-sm text-muted">
+  <span>{formattedDate}</span>
+  <span>
+    {
+      categories && categories.length > 0 && (
+        <>
+          {"{"}
+          {categories.map((cat, index) => (
+            <>
+              <a
+                href={`/categories/${cat.toLowerCase()}`}
+                class="text-muted"
+              >
+                {cat}
+              </a>
+              {index < categories.length - 1 && ", "}
+            </>
+          ))}
+          {"}"}
+        </>
+      )
+    }
+    {
+      tags && tags.length > 0 && (
+        <>
+          {" "}
+          [
+          {tags.map((tag, index) => (
+            <>
+              <a
+                href={`/tags/${tag.toLowerCase()}`}
+                class="text-muted"
+              >
+                {tag}
+              </a>
+              {index < tags.length - 1 && ", "}
+            </>
+          ))}
+          ]
+        </>
+      )
+    }
+  </span>
 </div>

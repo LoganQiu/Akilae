@@ -16,7 +16,7 @@ const sortedPosts = posts.sort((a, b) =>
   <h1 class="text-3xl font-bold mb-6">Blog</h1>
   <div class="space-y-4">
     {sortedPosts.map((post) => (
-      <BlogCard post={post} showSubtitle={true} />
+      <BlogCard post={post} />
     ))}
   </div>
 </ListLayout>

@@ -1,28 +1,31 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import Meta from './Meta.astro';
+import type { CollectionEntry } from "astro:content";
+import Meta from "./Meta.astro";
 
 export interface Props {
-  post: CollectionEntry<'blog'>;
-  showSubtitle?: boolean;
+  post: CollectionEntry<"blog">;
 }
 
-const { post, showSubtitle = false } = Astro.props;
+const { post } = Astro.props;
 ---
 
-<article class="border border-dashed border-muted p-4 mb-4">
-  <div class="flex items-baseline gap-4">
-    <h2 class="text-lg font-semibold">
-      <a href={`/blog/${post.slug}/`} class="text-accent hover:text-accent/80">{post.data.title}</a>
+<article class="border border-dashed border-foreground p-4 mb-4">
+    <h2 class="text-lg font-semibold border-0">
+      <a href={`/blog/${post.slug}/`} class=""
+        >{post.data.title}</a
+      >
+      {
+        post.data.subtitle && (
+          <small class="text-muted font-normal italic">
+            {post.data.subtitle}
+          </small>
+        )
+      }
     </h2>
-    {showSubtitle && post.data.subtitle && (
-      <h3 class="text-base text-muted">{post.data.subtitle}</h3>
-    )}
-  </div>
-  
+
   <div class="mt-2 text-sm text-muted">
-    <Meta 
-      date={post.data.date} 
+    <Meta
+      date={post.data.date}
       categories={post.data.categories}
       tags={post.data.tags}
     />

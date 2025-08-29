@@ -21,8 +21,8 @@ const { title, subtitle, description, keywords, prevPost, nextPost } = Astro.pro
   keywords={keywords}
   pageType="single"
 >
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-app mx-auto">
     <slot />
-    {(prevPost || nextPost) && <PostNav prev={prevPost} next={nextPost} />}
+    <PostNav prev={prevPost} next={nextPost} />
   </div>
 </BaseLayout>

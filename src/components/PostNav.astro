@@ -13,9 +13,8 @@ export interface Props {
 const { prev, next } = Astro.props;
 ---
 
-<hr class="mt-8 pt-4" />
 {(prev || next) && (
-  <nav class="flex justify-between pt=4 text-sm">
+  <nav class="flex justify-between mt-8 pt-4 text-sm">
     {prev && (
       <span>
         |&larr; <a href={prev.url} class="text-muted">{prev.title}</a>

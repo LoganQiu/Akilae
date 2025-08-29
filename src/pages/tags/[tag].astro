@@ -1,45 +1,48 @@
 ---
-import { getCollection } from 'astro:content';
-import ListLayout from '../../layouts/ListLayout.astro';
-import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from "astro:content";
+import ListLayout from "../../layouts/ListLayout.astro";
+import BlogCard from "../../components/BlogCard.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   const tags = new Map<string, typeof posts>();
-  
-  posts.forEach(post => {
-    post.data.tags?.forEach(tag => {
-      const slug = tag.toLowerCase().replace(/\s+/g, '-');
+
+  posts.forEach((post) => {
+    post.data.tags?.forEach((tag) => {
+      const slug = tag.toLowerCase().replace(/\s+/g, "-");
       if (!tags.has(slug)) {
         tags.set(slug, []);
       }
       tags.get(slug)!.push(post);
     });
   });
-  
+
   return Array.from(tags.entries()).map(([slug, posts]) => {
-    const displayName = posts[0]?.data.tags?.find(t => 
-      t.toLowerCase().replace(/\s+/g, '-') === slug
-    ) || slug;
-    
+    const displayName =
+      posts[0]?.data.tags?.find(
+        (t) => t.toLowerCase().replace(/\s+/g, "-") === slug
+      ) || slug;
+
     return {
       params: { tag: slug },
-      props: { posts, displayName }
+      props: { posts, displayName },
     };
   });
 }
 
 const { posts, displayName } = Astro.props;
-const sortedPosts = posts.sort((a: any, b: any) => 
-  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+const sortedPosts = posts.sort(
+  (a: any, b: any) =>
+    new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 ---
 
 <ListLayout title={`Tag: ${displayName}`}>
-  <h1 class="title">{displayName}<span class="small subtitle"> | <a href="/tags/">tags</a></span></h1>
+  <h1 class="title">
+    {displayName}<span class="small subtitle">
+      | <a href="/tags/">tags</a></span>
+  </h1>
   <div class="main archive">
-    {sortedPosts.map((post: any) => (
-      <BlogCard post={post} showSubtitle={true} />
-    ))}
+    {sortedPosts.map((post: any) => <BlogCard post={post} />)}
   </div>
 </ListLayout>
