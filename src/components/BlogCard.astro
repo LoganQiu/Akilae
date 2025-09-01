@@ -10,7 +10,7 @@ const { post } = Astro.props;
 ---
 
 <article class="border border-dashed border-foreground p-4 mb-4">
-    <h2 class="text-lg font-semibold border-0">
+    <h2 class="text-lg font-semibold mt-0 border-0">
       <a href={`/blog/${post.slug}/`} class=""
         >{post.data.title}</a
       >
@@ -22,12 +22,9 @@ const { post } = Astro.props;
         )
       }
     </h2>
-
-  <div class="mt-2 text-sm text-muted">
     <Meta
       date={post.data.date}
       categories={post.data.categories}
       tags={post.data.tags}
     />
-  </div>
 </article>

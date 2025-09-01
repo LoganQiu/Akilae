@@ -2,8 +2,8 @@
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="max-w-app mx-auto px-4">
-  <nav class="pt-4 border-b">
+<header class="max-w-app mx-auto px-4 pt-4">
+  <nav class="border-b">
     <div class="flex justify-between">
       <div class="text-xl">
         <a href="/">LOGO</a>
@@ -18,8 +18,6 @@ const currentPath = Astro.url.pathname;
         <span class={currentPath === "/archives" ? "active" : ""}>
           <a href="/archives">Archives</a>
         </span>
-        <span class={currentPath === "/search" ? "active" : ""}>
-          <a href="/search">Search</a>
         </span>
         <button id="toggle-theme" aria-label="Toggle theme">11</button>
       </div>
