@@ -1,8 +1,17 @@
 @import "tailwindcss";
+@import 'remark-github-blockquote-alert/alert.css';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
 
 @layer base {
   :root,
-  html.light {
+  html[data-theme="light"] {
     --background: #fdfdfd;
     --foreground: #282728;
     --accent: #2e00d2;
@@ -10,8 +19,8 @@
     --border: #1a0079;
   }
 
-  html.dark {
-    --background: #0e1118;
+  html[data-theme="dark"] {
+    --background: #1b1f27;
     --foreground: #d9d9db;
     --accent: #ff6b01;
     --muted: #9da0a8;
@@ -40,7 +49,7 @@
   }
 
   table {
-    @apply my-6 text-sm;
+    @apply block my-6 text-sm mx-auto whitespace-nowrap overflow-x-auto max-w-fit;
     th, td {
       @apply border border-border p-2;
     }
@@ -50,22 +59,20 @@
   }
 
   h1 {
-    @apply text-3xl mb-6 font-bold;
+    @apply text-3xl my-8 font-bold;
   }
   h2 {
-    @apply text-2xl my-4 font-bold border-b;;
+    @apply text-2xl my-6 font-bold border-b;;
   }
   h3 {
-    @apply text-xl mb-2 font-bold italic;
+    @apply text-xl my-6 font-bold italic;
   }
   h4 {
-    @apply text-lg mb-3;
+    @apply text-lg my-4;
   }
+
   p {
     @apply my-4 leading-6;
-  }
-  code {
-    @apply bg-muted/10 rounded p-1 text-sm;
   }
 
   ul {
@@ -93,6 +100,29 @@
   ol > li::marker {
     @apply text-accent;
   }
+
+  blockquote {
+    @apply border-l-4 border-accent pl-4 italic my-4;
+  }
+
+  code {
+    @apply bg-muted/20 p-1 text-sm;
+  }
+
+  pre {
+    @apply border border-border my-4 p-2 rounded-md;
+  }
+
+  img {
+    @apply my-8 border border-border;
+  }
+
+  figure {
+    @apply my-8;
+  }
+  figcaption {
+    @apply text-sm text-muted mt-2;
+  }
 }
 
 @layer components {
@@ -112,5 +142,21 @@
 
   .active {
     @apply border-b-[5px] border-solid -mb-[5px];
+  }
+
+  .markdown-alert-title {
+    @apply my-0;
+  }
+
+  /* ===== Code Blocks & Syntax Highlighting ===== */
+  .astro-code code {
+    @apply bg-inherit p-0;
+  }
+  html[data-theme="light"] .astro-code {
+    @apply bg-(--shiki-light-bg) text-(--shiki-light) [&_span]:text-(--shiki-light);
+  }
+
+  html[data-theme="dark"] .astro-code {
+    @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
   }
 }

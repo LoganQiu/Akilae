@@ -1,10 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-
-import tailwindcss from '@tailwindcss/vite';
+import remarkGithubAlerts from 'remark-github-blockquote-alert';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,10 +12,14 @@ export default defineConfig({
 
   markdown: {
     shikiConfig: {
-      theme: 'github-light',
-      wrap: true,
+      themes: {
+        light: 'catppuccin-latte',
+        dark: 'catppuccin-mocha',
+      },
+      wrap: false,
+      defaultColor: false,
     },
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, remarkGithubAlerts],
     rehypePlugins: [rehypeKatex],
   },
 

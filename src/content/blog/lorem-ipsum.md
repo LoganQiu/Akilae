@@ -83,7 +83,6 @@ A full-width table:
 | Item A     | 这是 Item A |   10 |
 | Item B     | 这是 Item B |    5 |
 
-
 Display math (render by katex):
 
 $$
