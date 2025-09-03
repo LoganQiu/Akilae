@@ -30,14 +30,11 @@
     --border: #ab4b08;
   }
 
-  * {
-    @apply border-box;
-  }
   html {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply min-h-svh flex-col font-article bg-background text-foreground;
+    @apply min-h-svh flex-col font-article bg-background text-foreground md:px-8 md:py-8 lg:mx-[calc((100vw-66rem)/2)] lg:my-4;
   }
   header,
   footer {
@@ -47,7 +44,7 @@
     @apply break-words hover:text-accent hover:underline hover:decoration-wavy;
   }
   hr {
-    @apply border-border;
+    @apply border-muted;
   }
 
   h1 {
@@ -58,7 +55,7 @@
     @apply absolute -z-10 -top-20 text-muted font-normal text-[6em] opacity-20;
   }
   h2 {
-    @apply text-2xl my-6 font-bold border-b;;
+    @apply text-2xl my-6 font-bold border-b border-muted border-dashed;
   }
   h3 {
     @apply text-xl my-6 font-bold italic;
@@ -118,10 +115,10 @@
   }
 
   img {
-    @apply my-8 border border-border;
+    @apply mx-auto my-8 border border-border;
   }
   figure {
-    @apply my-8;
+    @apply mx-auto my-8;
   }
   figcaption {
     @apply text-sm text-muted mt-2;
@@ -137,7 +134,7 @@
 
 @layer utilities {
   .max-w-app {
-    @apply max-w-3xl;
+    @apply max-w-4xl;
   }
 
   .katex-display {
@@ -151,15 +148,15 @@
   .markdown-alert-title {
     @apply my-0;
   }
-
+  /* ==== paged.js style ==== */
   .crop-h {
-    @apply absolute -z-10 inset-x-8 top-12 bottom-12 border-y;
+    @apply hidden md:block absolute -z-10 top-12 bottom-12 left-0 right-0 border-y border-foreground;
   }
   .crop-v {
-    @apply absolute -z-10 inset-y-8 left-12 right-12 border-x;
+    @apply hidden md:block absolute -z-10 top-0 bottom-0 left-12 right-12 border-x border-foreground;
   }
   .crop-c {
-    @apply absolute -z-10 inset-10 border-16 border-background;
+    @apply hidden md:block absolute -z-10 border-background top-6 left-6 right-6 bottom-6 border-[1.75rem];
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
