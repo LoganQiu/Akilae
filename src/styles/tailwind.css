@@ -20,7 +20,7 @@
   }
 
   html[data-theme="dark"] {
-    --background: #1b1f27;
+    --background: #212529;
     --foreground: #d9d9db;
     --accent: #ff6b01;
     --muted: #9da0a8;
@@ -39,7 +39,7 @@
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply min-h-svh flex-col font-serif bg-background text-foreground transition-colors;
+    @apply min-h-svh flex-col font-serif bg-background text-foreground;
   }
   a {
     @apply break-words hover:text-accent hover:underline hover:decoration-wavy;
@@ -59,7 +59,11 @@
   }
 
   h1 {
-    @apply text-3xl my-8 font-bold;
+    @apply text-3xl my-8 font-bold relative;
+  }
+  h1::before {
+    content: '❧';
+    @apply absolute -z-10 -top-20 text-muted font-normal text-[6em] opacity-20;
   }
   h2 {
     @apply text-2xl my-6 font-bold border-b;;
@@ -76,7 +80,7 @@
   }
 
   ul {
-    @apply list-disc pl-6 my-4;
+    @apply list-disc pl-6 my-6;
   }
   ul ul {
     @apply list-[circle];
@@ -85,7 +89,7 @@
     @apply list-[square];
   }
   ol {
-    @apply list-decimal pl-6 my-4;
+    @apply list-decimal pl-6 my-6;
   }
   ol ol {
     @apply list-[lower-alpha];
@@ -129,6 +133,7 @@
   article a {
     @apply break-words underline decoration-1 decoration-dashed underline-offset-4 hover:text-accent hover:decoration-wavy;
   }
+
 }
 
 @layer utilities {
@@ -148,6 +153,16 @@
     @apply my-0;
   }
 
+  .crop-h {
+    @apply absolute -z-10 inset-x-8 top-12 bottom-12 border-y;
+  }
+  .crop-v {
+    @apply absolute -z-10 inset-y-8 left-12 right-12 border-x;
+  }
+  .crop-c {
+    @apply absolute -z-10 inset-10 border-16 border-background;
+  }
+
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code code {
     @apply bg-inherit p-0;
@@ -159,4 +174,16 @@
   html[data-theme="dark"] .astro-code {
     @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
   }
+}
+
+h1.title::before {
+  content: "❧";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 6em;
+  color: var(--muted);
+  opacity: .5;
+  position: absolute;
+  inset: -.1em .8em;
+  z-index: -1;
 }
