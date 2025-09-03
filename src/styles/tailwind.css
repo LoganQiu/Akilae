@@ -1,12 +1,15 @@
 @import "tailwindcss";
 @import 'remark-github-blockquote-alert/alert.css';
+@import './fonts.css';
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --font-article: 'Linden Hill', Palatino, serif;
+  --font-decoration: Jost, Futura, sans-serif;
 }
 
 @layer base {
@@ -27,35 +30,24 @@
     --border: #ab4b08;
   }
 
-  @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-accent: var(--accent);
-    --color-muted: var(--muted);
-    --color-border: var(--border);
+  * {
+    @apply border-box;
   }
-
   html {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply min-h-svh flex-col font-serif bg-background text-foreground;
+    @apply min-h-svh flex-col font-article bg-background text-foreground;
+  }
+  header,
+  footer {
+    @apply font-decoration text-sm;
   }
   a {
     @apply break-words hover:text-accent hover:underline hover:decoration-wavy;
   }
   hr {
     @apply border-border;
-  }
-
-  table {
-    @apply block my-6 text-sm mx-auto whitespace-nowrap overflow-x-auto max-w-fit;
-    th, td {
-      @apply border border-border p-2;
-    }
-    code {
-      @apply text-xs break-all sm:break-normal;
-    }
   }
 
   h1 {
@@ -108,19 +100,26 @@
   blockquote {
     @apply border-l-4 border-accent pl-4 italic my-4;
   }
-
   code {
     @apply bg-muted/20 p-1 text-sm;
   }
-
   pre {
     @apply border border-border my-4 p-2 rounded-md;
+  }
+
+  table {
+    @apply block my-6 text-sm mx-auto whitespace-nowrap overflow-x-auto max-w-fit;
+    th, td {
+      @apply border border-border p-2;
+    }
+    code {
+      @apply text-xs break-all sm:break-normal;
+    }
   }
 
   img {
     @apply my-8 border border-border;
   }
-
   figure {
     @apply my-8;
   }
@@ -174,16 +173,4 @@
   html[data-theme="dark"] .astro-code {
     @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
   }
-}
-
-h1.title::before {
-  content: "❧";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 6em;
-  color: var(--muted);
-  opacity: .5;
-  position: absolute;
-  inset: -.1em .8em;
-  z-index: -1;
 }
