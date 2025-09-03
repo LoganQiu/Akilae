@@ -1,7 +1,8 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import SingleLayout from "../../layouts/SingleLayout.astro";
 import Meta from "../../components/Meta.astro";
+import { getPostPath, getSlugFromPath } from "../../utils/getPostPath";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -10,10 +11,13 @@ export async function getStaticPaths() {
   );
 
   return sortedPosts.map((entry, index) => {
+    const postPath = getPostPath(entry);
+    const slugParam = getSlugFromPath(postPath);
+    
     const prevPost =
       index > 0
         ? {
-            url: `/blog/${sortedPosts[index - 1].slug}/`,
+            url: getPostPath(sortedPosts[index - 1]),
             title: sortedPosts[index - 1].data.title,
           }
         : null;
@@ -21,20 +25,20 @@ export async function getStaticPaths() {
     const nextPost =
       index < sortedPosts.length - 1
         ? {
-            url: `/blog/${sortedPosts[index + 1].slug}/`,
+            url: getPostPath(sortedPosts[index + 1]),
             title: sortedPosts[index + 1].data.title,
           }
         : null;
 
     return {
-      params: { slug: entry.slug },
+      params: { slug: slugParam },
       props: { entry, prevPost, nextPost },
     };
   });
 }
 
 const { entry, prevPost, nextPost } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <SingleLayout

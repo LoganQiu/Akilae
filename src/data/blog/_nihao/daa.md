@@ -1,7 +1,8 @@
 ---
-title: "Hello Markdown"
+title: "tttttttt"
 author: "Yihui Xie"
-date: 2016-02-14
+slug: "hello-markdownnn"
+date: 2016-02-15
 categories: ["Example"]
 tags: ["Markdown", "Tutorial"]
 ---

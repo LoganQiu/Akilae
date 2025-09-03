@@ -1,6 +1,7 @@
 ---
 title: Lorem ipsum dolor sit amet
 author: A Brilliant Author
+slug: "lorem-ipsum-dolor-sit-amet"
 date: 2015-07-23
 categories:
   - Example

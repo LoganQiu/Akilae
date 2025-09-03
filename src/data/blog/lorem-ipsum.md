@@ -2,6 +2,7 @@
 title: "Lorem Ipsum"
 subtitle: "The first post, with a Latin title"
 author: "Yihui Xie"
+slug: "lorem-ipsum"
 date: 2015-07-23
 categories: ["Example", "Lorem Ipsum"]
 tags: ["Markdown"]

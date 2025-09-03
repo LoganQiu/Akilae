@@ -1,17 +1,19 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Meta from "./Meta.astro";
+import { getPostPath } from "../utils/getPostPath";
 
 export interface Props {
   post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
+const postPath = getPostPath(post);
 ---
 
 <article class="border border-dashed border-foreground p-4 mb-4">
     <h2 class="text-lg font-semibold mt-0 border-0">
-      <a href={`/blog/${post.slug}/`} class=""
+      <a href={postPath} class=""
         >{post.data.title}</a
       >
       {
