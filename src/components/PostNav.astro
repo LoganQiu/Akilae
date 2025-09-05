@@ -14,16 +14,22 @@ const { prev, next } = Astro.props;
 ---
 
 {(prev || next) && (
-  <nav class="flex justify-between mt-8 pt-4 text-sm">
-    {prev && (
-      <span>
-        |&larr; <a href={prev.url} class="text-muted">{prev.title}</a>
-      </span>
-    )}
-    {next && (
-      <span class="ml-auto">
-        <a href={next.url} class="text-muted">{next.title}</a> &rarr;|
-      </span>
-    )}
+  <nav class="flex justify-between items-center my-8 px-4 py-1 border-x text-sm font-kai">
+    <span class="text-muted">
+      &larr;&nbsp;
+      {prev ? (
+          <a href={prev.url}>{prev.title}</a>
+      ) : (
+        <>&empty;</>
+      )}
+    </span>
+    <span class="text-muted">
+      {next ? (
+          <a href={next.url}>{next.title}</a>
+      ) : (
+        <>&empty;</>
+      )}
+      &nbsp;&rarr;
+    </span>
   </nav>
 )}

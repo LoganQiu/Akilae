@@ -14,15 +14,15 @@ export interface Props {
 const { title, subtitle, description, keywords, prevPost, nextPost } = Astro.props;
 ---
 
-<BaseLayout 
-  title={title} 
-  subtitle={subtitle} 
-  description={description} 
+<BaseLayout
+  title={title}
+  subtitle={subtitle}
+  description={description}
   keywords={keywords}
   pageType="single"
 >
-  <div class="max-w-app mx-auto">
+
     <slot />
     <PostNav prev={prevPost} next={nextPost} />
-  </div>
+
 </BaseLayout>

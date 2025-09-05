@@ -2,14 +2,15 @@
 @import 'remark-github-blockquote-alert/alert.css';
 @import './fonts.css';
 
-@theme {
+@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-article: 'Linden Hill', Palatino, serif;
-  --font-decoration: Jost, Futura, sans-serif;
+  --font-article: var(--font-libertinus), serif;
+  --font-decoration: var(--font-jost), sans-serif;
+  --font-kai: "Georgia", "SimKai", "KaiTi", "Kaiti SC", serif;
 }
 
 @layer base {
@@ -31,10 +32,16 @@
   }
 
   html {
-    @apply overflow-y-scroll scroll-smooth;
+    @apply overflow-y-auto scroll-smooth;
   }
   body {
-    @apply min-h-svh flex-col font-article bg-background text-foreground md:px-8 md:py-8 lg:mx-[calc((100vw-66rem)/2)] lg:my-4;
+    @apply
+      min-h-dvh relative flex flex-col bg-background text-foreground
+      md:px-8 md:py-8
+      lg:min-h-[calc(100dvh-2rem)] lg:mx-[calc((100vw-62rem)/2)] lg:my-4;
+  }
+  main {
+    @apply font-article;
   }
   header,
   footer {
@@ -45,6 +52,9 @@
   }
   hr {
     @apply border-muted;
+  }
+  article {
+      @apply my-8 tracking-wide
   }
 
   h1 {
@@ -98,7 +108,7 @@
     @apply border-l-4 border-accent pl-4 italic my-4;
   }
   code {
-    @apply bg-muted/20 p-1 text-sm;
+    @apply bg-muted/20 p-1 text-sm tracking-normal;
   }
   pre {
     @apply border border-border my-4 p-2 rounded-md;
@@ -126,10 +136,9 @@
 }
 
 @layer components {
-  article a {
+  main a {
     @apply break-words underline decoration-1 decoration-dashed underline-offset-4 hover:text-accent hover:decoration-wavy;
   }
-
 }
 
 @layer utilities {
