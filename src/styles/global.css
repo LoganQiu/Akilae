@@ -169,7 +169,7 @@
     @apply text-foreground;
   }
   .active {
-    @apply border-b-[5px] border-solid -mb-[5px];
+    @apply border-b-[5px] -mb-[5px];
   }
   .markdown-alert-title {
     @apply my-0;

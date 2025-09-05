@@ -3,4 +3,5 @@
 ## 👀 Todo
 
 - [] ogImage
-- [] Search(Pagefind
+- [] Search(Pagefind)
+- [] ToC Component
