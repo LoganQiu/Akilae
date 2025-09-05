@@ -18,7 +18,10 @@ const currentPath = Astro.url.pathname;
         <span class={currentPath === "/archives" ? "active" : ""}>
           <a href="/archives">Archives</a>
         </span>
-        <button id="theme-btn" aria-label="auto" class="flex">O</button>
+        <button id="theme-btn" aria-label="auto" class="flex">
+          <span class="inline dark:hidden">&olcir;</span>
+          <span class="hidden dark:inline">&ofcir;</span>
+        </button>
       </div>
     </div>
   </nav>
