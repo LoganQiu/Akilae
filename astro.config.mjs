@@ -7,7 +7,13 @@ import remarkGithubAlerts from 'remark-github-blockquote-alert';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://zeratulqiu.me',
+  integrations: [
+    sitemap({
+      changefreq: 'weekly',
+      filter: (page) => !page.includes('/404')
+    }),
+  ],
   markdown: {
     shikiConfig: {
       themes: {
@@ -20,7 +26,6 @@ export default defineConfig({
     remarkPlugins: [remarkMath, remarkGithubAlerts],
     rehypePlugins: [rehypeKatex],
   },
-  integrations: [sitemap()],
   output: 'static',
   vite: {
     plugins: [tailwindcss()],

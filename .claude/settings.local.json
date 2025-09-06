@@ -6,7 +6,8 @@
       "Bash(pnpm run:*)",
       "Bash(rm:*)",
       "WebFetch(domain:yihui.org)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.astro.build)"
     ],
     "deny": [],
     "ask": [],
