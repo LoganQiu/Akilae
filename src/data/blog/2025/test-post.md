@@ -2,7 +2,8 @@
 title: "Test Post in 2025"
 slug: "test-post"
 author: "Test Author"
-date: 2025-01-15
+pubdate: 2025-01-15
+moddate: 2025-01-20
 categories: ["Test"]
 tags: ["test"]
 ---

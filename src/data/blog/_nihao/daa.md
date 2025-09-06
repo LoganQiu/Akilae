@@ -2,7 +2,7 @@
 title: "tttttttt"
 author: "Yihui Xie"
 slug: "hello-markdownnn"
-date: 2016-02-15
+pubdate: 2016-02-15
 categories: ["Example"]
 tags: ["Markdown", "Tutorial"]
 ---

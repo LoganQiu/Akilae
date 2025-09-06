@@ -1,8 +1,9 @@
 ---
 title: "Hello Markdown"
+desc: "A comprehensive guide to Markdown syntax and formatting. Perfect for beginners who want to learn how to write beautiful, formatted text using simple markup."
 author: "Yihui Xie"
 slug: "hello-markdown"
-date: 2016-02-14
+pubdate: 2016-02-14
 categories: ["Example"]
 tags: ["Markdown", "Tutorial"]
 ---

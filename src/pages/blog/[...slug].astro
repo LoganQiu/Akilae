@@ -8,7 +8,11 @@ export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   const sortedPosts = blogEntries
     .filter(entry => entry.data.draft !== true)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    .sort((a, b) => {
+      const dateA = a.data.moddate || a.data.pubdate;
+      const dateB = b.data.moddate || b.data.pubdate;
+      return dateB.valueOf() - dateA.valueOf();
+    });
 
   return sortedPosts.map((entry, index) => {
     const postPath = getPostPath(entry);
@@ -42,7 +46,7 @@ const { Content } = await render(entry);
 <SingleLayout
   title={entry.data.title}
   subtitle={entry.data.subtitle}
-  description={entry.data.subtitle}
+  description={entry.data.desc || entry.data.subtitle}
   keywords={entry.data.tags}
   prevPost={prevPost}
   nextPost={nextPost}
@@ -59,7 +63,8 @@ const { Content } = await render(entry);
       }
     </h1>
     <Meta
-      date={entry.data.date}
+      pubdate={entry.data.pubdate}
+      moddate={entry.data.moddate}
       categories={entry.data.categories}
       tags={entry.data.tags}
     />

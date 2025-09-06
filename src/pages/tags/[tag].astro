@@ -30,9 +30,11 @@ export async function getStaticPaths() {
 }
 
 const { posts, displayName } = Astro.props;
-const sortedPosts = posts.sort((a: any, b: any) =>
-  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-);
+const sortedPosts = posts.sort((a: any, b: any) => {
+  const dateA = a.data.moddate || a.data.pubdate;
+  const dateB = b.data.moddate || b.data.pubdate;
+  return new Date(dateB).getTime() - new Date(dateA).getTime();
+});
 ---
 
 <ListLayout title={`Tag: ${displayName}`}>

@@ -60,20 +60,20 @@
       @apply my-8 tracking-wide
   }
   h1 {
-    @apply text-3xl my-8 font-bold relative;
+    @apply text-4xl my-8 font-bold relative;
   }
   h1::before {
     content: '❧';
     @apply absolute -z-10 -top-20 text-muted font-normal text-[6em] opacity-20;
   }
   h2 {
-    @apply text-2xl my-6 font-bold border-b border-muted border-dashed;
+    @apply text-3xl my-6 font-bold border-b border-muted border-dashed;
   }
   h3 {
-    @apply text-xl my-6 font-bold italic;
+    @apply text-2xl my-6 font-bold italic;
   }
   h4 {
-    @apply text-lg my-4;
+    @apply text-xl my-4;
   }
   p {
     @apply my-4 leading-6;

@@ -1,21 +1,36 @@
 ---
 interface Props {
-  date?: Date | string;
+  pubdate?: Date | string;
+  moddate?: Date | string;
   categories?: string[];
   tags?: string[];
 }
 
-const { date, categories, tags } = Astro.props;
+const { pubdate, moddate, categories, tags } = Astro.props;
 
-const formattedDate =
-  date instanceof Date
-    ? date.toISOString().slice(0, 10)
-    : date ?? null;
+// 格式化日期函数
+const formatDate = (date: Date | string | undefined) => {
+  if (!date) return null;
+  const d = date instanceof Date ? date : new Date(date);
+  return d.toISOString().slice(0, 10);
+};
+
+const formattedPubDate = formatDate(pubdate);
+const formattedModDate = formatDate(moddate);
+
+// 构建日期显示字符串
+let dateDisplay = '';
+if (formattedPubDate) {
+  dateDisplay = `pub: ${formattedPubDate}`;
+}
+if (formattedModDate) {
+  dateDisplay += formattedPubDate ? ` | mod: ${formattedModDate}` : `mod: ${formattedModDate}`;
+}
 ---
 
-<div class="flex justify-between text-sm text-muted">
-  <span>{formattedDate}</span>
-  <span>
+<div class="flex flex-col md:flex-row md:justify-between text-sm text-muted gap-1">
+  <span>{dateDisplay}</span>
+  <span class="md:text-right">
     {
       categories && categories.length > 0 && (
         <>

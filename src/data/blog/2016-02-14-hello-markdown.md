@@ -3,7 +3,7 @@ title: A Plain Markdown Post
 subtitle: with a subtitle...
 author: Yihui Xie
 slug: "plain-markdown-post"
-date: 2016-02-14
+pubdate: 2016-02-14
 categories:
   - Example
   - Hugo

@@ -4,14 +4,19 @@ import ListLayout from '../layouts/ListLayout.astro';
 import { getPostPath } from '../utils/getPostPath';
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
-const sortedPosts = blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedPosts = blogPosts.sort((a, b) => {
+  const dateA = a.data.moddate || a.data.pubdate;
+  const dateB = b.data.moddate || b.data.pubdate;
+  return dateB.valueOf() - dateA.valueOf();
+});
 
 // Group posts by year and month
 const postsByYearMonth = new Map<number, Map<string, typeof blogPosts>>();
 
 sortedPosts.forEach(post => {
-  const year = post.data.date.getFullYear();
-  const month = String(post.data.date.getMonth() + 1).padStart(2, '0');
+  const displayDate = post.data.moddate || post.data.pubdate;
+  const year = displayDate.getFullYear();
+  const month = String(displayDate.getMonth() + 1).padStart(2, '0');
 
   if (!postsByYearMonth.has(year)) {
     postsByYearMonth.set(year, new Map());
@@ -49,7 +54,7 @@ const formatDate = (date: Date) => {
             <ul class="list-none flex flex-wrap gap-x-4">
               {yearMap.get(month)!.map(post => (
                 <li class="inline-flex items-center gap-2">
-                  <span class="text-muted whitespace-nowrap">{formatDate(post.data.date)}</span>
+                  <span class="text-muted whitespace-nowrap">{formatDate(post.data.moddate || post.data.pubdate)}</span>
                   <a href={getPostPath(post)} class="no-underline hover:underline hover:decoration-wavy">{post.data.title}</a>
                 </li>
               ))}

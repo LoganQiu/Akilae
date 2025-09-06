@@ -1,9 +1,11 @@
 ---
 title: "Lorem Ipsum"
 subtitle: "The first post, with a Latin title"
+desc: "An exploration of Lorem Ipsum text and its historical significance in typography and design. Learn about the origins and usage of this placeholder text."
 author: "Yihui Xie"
 slug: "lorem-ipsum"
-date: 2015-07-23
+pubdate: 2015-07-23
+moddate: 2023-11-20
 categories: ["Example", "Lorem Ipsum"]
 tags: ["Markdown"]
 ---

@@ -11,8 +11,8 @@ const { post } = Astro.props;
 const postPath = getPostPath(post);
 ---
 
-<article class="border border-dashed border-foreground p-4 mb-4">
-    <h2 class="text-lg font-semibold mt-0 border-0">
+<article class="border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground">
+    <h2 class="text-xl font-semibold mt-0 border-0 mb-2">
       <a href={postPath} class=""
         >{post.data.title}</a
       >
@@ -25,8 +25,16 @@ const postPath = getPostPath(post);
       }
     </h2>
     <Meta
-      date={post.data.date}
+      pubdate={post.data.pubdate}
+      moddate={post.data.moddate}
       categories={post.data.categories}
       tags={post.data.tags}
     />
+    {
+      post.data.desc && (
+        <p class="mb-0">
+          {post.data.desc}
+        </p>
+      )
+    }
 </article>
