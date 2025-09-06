@@ -23,7 +23,7 @@ const formattedDate =
           {categories.map((cat, index) => (
             <>
               <a
-                href={`/categories/${cat.toLowerCase()}`}
+                href={`/categories/${cat.toLowerCase().replace(/\s+/g, '-')}`}
                 class="text-muted"
               >
                 {cat}
@@ -43,7 +43,7 @@ const formattedDate =
           {tags.map((tag, index) => (
             <>
               <a
-                href={`/tags/${tag.toLowerCase()}`}
+                href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
                 class="text-muted"
               >
                 {tag}

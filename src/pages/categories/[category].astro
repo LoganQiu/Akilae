@@ -36,7 +36,7 @@ const sortedPosts = posts.sort((a: any, b: any) =>
 ---
 
 <ListLayout title={`Category: ${displayName}`}>
-  <h1 class="title">{displayName}<span class="small subtitle"> | <a href="/categories/">categories</a></span></h1>
+  <h1 class="title">{displayName}<span class="text-base"> | <a href="/categories/">categories</a></span></h1>
   <div class="main archive">
     {sortedPosts.map((post: any) => (
       <BlogCard post={post} />

@@ -30,4 +30,6 @@ And tables:
 
 Even math expressions: $x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$
 
-$$x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$$
+$$
+x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}
+$$

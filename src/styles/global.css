@@ -131,9 +131,8 @@
     @apply text-sm text-muted mt-2;
   }
   kbd {
-    @apply inline-block px-1 font-mono text-sm hover:translate-px
-           text-foreground bg-background border-1 border-muted rounded-md
-           shadow-[1px_1px_0px_rgba(0,0,0,0.6)] dark:shadow-[1px_1px_0px_rgba(255,255,255,0.6)];
+    @apply inline-block px-1 font-mono text-sm hover:translate-px ring-1 ring-muted rounded-sm
+           shadow-[2px_2px_1px_rgba(0,0,0,0.6)] dark:shadow-[2px_2px_1px_rgba(255,255,255,0.6)];
   }
 }
 
@@ -165,13 +164,16 @@
   .max-w-app {
     @apply max-w-4xl;
   }
-  .katex-display {
-    @apply text-foreground;
-  }
   .active {
     @apply border-b-[5px] -mb-[5px];
   }
   .markdown-alert-title {
     @apply my-0;
+  }
+  .footnotes {
+    @apply border-t-2 border-dotted border-muted mx-12 mt-12;
+    h2 {
+      @apply hidden;
+    }
   }
 }

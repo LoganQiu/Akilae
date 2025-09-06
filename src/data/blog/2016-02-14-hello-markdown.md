@@ -26,7 +26,7 @@ A paragraph (with a footnote):
 **Lorem ipsum** dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor incididunt ut labore et dolore *magna aliqua*. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis au`te ir`ure dolor in reprehenderit in voluptate velit esse cillum
+consequat. Duis au `te ir` ure dolor in reprehenderit in voluptate velit esse cillum
 dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
 sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
 
@@ -75,14 +75,14 @@ An image (automatically centered):
 
 A math equation (render by KaTeX):
 
-`$$|x| = \begin{cases} x & \text{if } x \geq 0 \\ -x & \text{if } x < 0  \end{cases}$$`
+$$
+|x| = \begin{cases} x & \text{if } x \geq 0 \\ -x & \text{if } x < 0  \end{cases}
+$$
 
-$$|x| = \begin{cases} x & \text{if } x \geq 0 \\ -x & \text{if } x < 0  \end{cases}$$
-
-How about `Ctrl + C` and `Ctrl + V`?
+How about <kbd>Ctrl + C</kbd> and <kbd>Ctrl + V</kbd>?
 
 ## Another Section
 
-Looks good?
+Looks go $a$ od?
 
 Hope you will enjoy it.

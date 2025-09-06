@@ -61,10 +61,12 @@ const section = currentPath.split("/")[1] || "";
     />
 
     <ClientRouter />
+    {/* @ts-ignore */}
+    <Font cssVariable="--font-jost" preload />
+    {/* @ts-ignore */}
+    <Font cssVariable="--font-libertinus" preload />
 
     <script is:inline src="/toggle-theme.js"></script>
-    <Font cssVariable="--font-jost" preload />
-    <Font cssVariable="--font-libertinus" preload />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"

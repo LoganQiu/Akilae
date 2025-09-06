@@ -6,29 +6,27 @@ import { getPostPath, getSlugFromPath } from "../../utils/getPostPath";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
-  const sortedPosts = blogEntries.sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-  );
+  const sortedPosts = blogEntries
+    .filter(entry => entry.data.draft !== true)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return sortedPosts.map((entry, index) => {
     const postPath = getPostPath(entry);
     const slugParam = getSlugFromPath(postPath);
-    
-    const prevPost =
-      index > 0
-        ? {
-            url: getPostPath(sortedPosts[index - 1]),
-            title: sortedPosts[index - 1].data.title,
-          }
-        : null;
 
-    const nextPost =
-      index < sortedPosts.length - 1
-        ? {
-            url: getPostPath(sortedPosts[index + 1]),
-            title: sortedPosts[index + 1].data.title,
-          }
-        : null;
+    const prevPost = index > 0
+      ? {
+          url: getPostPath(sortedPosts[index - 1]),
+          title: sortedPosts[index - 1].data.title,
+        }
+      : null;
+
+    const nextPost = index < sortedPosts.length - 1
+      ? {
+          url: getPostPath(sortedPosts[index + 1]),
+          title: sortedPosts[index + 1].data.title,
+        }
+      : null;
 
     return {
       params: { slug: slugParam },
@@ -54,7 +52,9 @@ const { Content } = await render(entry);
       {entry.data.title}
       {
         entry.data.subtitle && (
-          <small class="text-muted font-normal italic">{entry.data.subtitle}</small>
+          <span class="text-sm text-muted font-normal italic">
+            {entry.data.subtitle}
+          </span>
         )
       }
     </h1>
