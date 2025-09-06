@@ -15,17 +15,15 @@ const sortedCategories = Array.from(categories.entries()).sort((a, b) => a[0].lo
 ---
 
 <ListLayout title="Categories">
-  <h1 class="title">Categories</h1>
-  <div class="main">
-    <ul class="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-      {sortedCategories.map(([category, count]) => (
-        <li>
-          <a href={`/categories/${category.toLowerCase().replace(/\s+/g, '-')}/`}>
-            {category}
-          </a>
-          <span>「{count}」</span>
-        </li>
-      ))}
-    </ul>
-  </div>
+  <h1>Categories</h1>
+  <ul class="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+    {sortedCategories.map(([category, count]) => (
+      <li>
+        <a href={`/categories/${category.toLowerCase().replace(/\s+/g, '-')}/`}>
+          {category}
+        </a>
+        <span>「{count}」</span>
+      </li>
+    ))}
+  </ul>
 </ListLayout>

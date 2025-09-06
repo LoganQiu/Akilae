@@ -15,17 +15,15 @@ const sortedTags = Array.from(tags.entries()).sort((a, b) => a[0].localeCompare(
 ---
 
 <ListLayout title="Tags">
-  <h1 class="title">Tags</h1>
-  <div class="main">
-    <ul class="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-      {sortedTags.map(([tag, count]) => (
-        <li>
-          <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>
-            {tag}
-          </a>
-          <span>「{count}」</span>
-        </li>
-      ))}
-    </ul>
-  </div>
+  <h1>Tags</h1>
+  <ul class="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+    {sortedTags.map(([tag, count]) => (
+      <li>
+        <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>
+          {tag}
+        </a>
+        <span>「{count}」</span>
+      </li>
+    ))}
+  </ul>
 </ListLayout>

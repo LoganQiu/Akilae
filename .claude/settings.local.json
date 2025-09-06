@@ -4,7 +4,9 @@
       "Read(//Users/loganqiu/code/**)",
       "Bash(pnpm install:*)",
       "Bash(pnpm run:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "WebFetch(domain:yihui.org)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": [],
