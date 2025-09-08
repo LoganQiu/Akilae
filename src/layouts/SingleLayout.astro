@@ -1,33 +1,33 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import PostNav from '../components/PostNav.astro';
+import PostNav from '@/components/PostNav.astro';
 
 export interface Props {
   title?: string;
   subtitle?: string;
   description?: string;
-  keywords?: string[];
   author?: string;
   pubdate?: Date;
   moddate?: Date | null;
   prevPost?: any;
   nextPost?: any;
   ogImage?: string;
+  katex?: boolean;
 }
 
-const { title, subtitle, description, keywords, author, pubdate, moddate, prevPost, nextPost, ogImage } = Astro.props;
+const { title, subtitle, description, author, pubdate, moddate, prevPost, nextPost, ogImage, katex } = Astro.props;
 ---
 
 <BaseLayout
   title={title}
   subtitle={subtitle}
   description={description}
-  keywords={keywords}
   author={author}
   pubdate={pubdate}
   moddate={moddate}
   pageType="single"
   ogImage={ogImage}
+  katex={katex}
 >
 
     <slot />

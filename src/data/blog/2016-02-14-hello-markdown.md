@@ -4,6 +4,7 @@ subtitle: with a subtitle...
 author: Yihui Xie
 slug: "plain-markdown-post"
 pubdate: 2016-02-14
+katex: true
 categories:
   - Example
   - Hugo
@@ -41,14 +42,14 @@ A blockquote (a gray bar at the left and lightgray background):
 > suscipit orci urna a augue. In fringilla euismod lacus, vitae tristique massa
 > ultricies vitae. Mauris accumsan ligula tristique, viverra nulla sed, porta
 > sapien. Vestibulum facilisis nec nisl blandit convallis. Maecenas venenatis
-> porta malesuada. Ut ac erat tortor. Orci varius natoque penatibus et magnis
+> porta malesuada. Ut ac erat tortor. Orci var多色彩的尺寸为时空错位二次充电爹味儿科目狼窝儿ius natoque penatibus et magnis
 > dis parturient montes, nascetur ridiculus mus. Nulla sodales quam sit amet
 > tincidunt egestas. In et turpis at orci vestibulum ullamcorper. Aliquam sed
 > ante libero. Sed hendrerit arcu lacus.
 >
 > --- by Someone
 
-A full-width piece of syntax-highlighted code with a drop-shadow effect:
+A full-width piece of syntax-hig的沃尔科夫藏闷儿卡片vkmkekrvcalsdmkhlighted code with a drop-shadow effect:
 
 ``` js
 // right-align a quote footer if it starts with ---

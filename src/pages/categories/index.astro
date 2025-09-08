@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ListLayout from '../../layouts/ListLayout.astro';
+import ListLayout from '@/layouts/ListLayout.astro';
 
 const posts = await getCollection('blog');
 const categories = new Map<string, number>();

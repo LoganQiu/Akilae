@@ -1,40 +1,107 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import { Font } from 'astro:assets';
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE } from "../config";
-import "../styles/global.css";
+import { Font } from "astro:assets";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+import "@/styles/global.css";
 
 export interface Props {
   title?: string;
   subtitle?: string;
   description?: string;
-  keywords?: string[];
   pageType?: "home" | "single" | "list";
   author?: string;
   pubdate?: Date;
   moddate?: Date | null;
   ogImage?: string;
+  katex?: boolean;
 }
 
 const {
   title = SITE.title,
   subtitle,
   description = SITE.desc,
-  keywords = [],
   pageType = "single",
+  author = SITE.author,
   ogImage,
+  katex = false,
+  pubdate,
+  moddate,
 } = Astro.props;
 
 const siteTitle = SITE.title;
-const pageTitle =
-  title === siteTitle
-    ? title
-    : `${title}${subtitle ? ` - ${subtitle}` : ""} - ${siteTitle}`;
+const pageTitle = title === siteTitle ? title : `${title}${subtitle ? ` - ${subtitle}` : ""} - ${siteTitle}`;
 
-const currentPath = Astro.url.pathname;
-const ogImageUrl = ogImage ? new URL(ogImage, Astro.url.origin).href : new URL('/og.png', Astro.url.origin).href;
+const ogImageUrl = ogImage ? new URL(ogImage, Astro.url.origin).href : new URL("/og.png", Astro.url.origin).href;
+
+// Generate JSON-LD structured data
+let jsonLd: any = {
+  "@context": "https://schema.org",
+};
+
+if (pageType === "home") {
+  // Website schema for homepage
+  jsonLd = {
+    ...jsonLd,
+    "@type": "WebSite",
+    name: SITE.title,
+    description: SITE.desc,
+    url: SITE.website,
+    author: {
+      "@type": "Person",
+      name: SITE.author,
+      url: SITE.profile,
+    },
+    publisher: {
+      "@type": "Person",
+      name: SITE.author,
+      url: SITE.profile,
+    },
+    inLanguage: SITE.lang,
+  };
+} else if (pageType === "single" && pubdate) {
+  // BlogPosting schema for blog posts
+  jsonLd = {
+    ...jsonLd,
+    "@type": "BlogPosting",
+    headline: title,
+    description: description,
+    author: {
+      "@type": "Person",
+      name: author,
+    },
+    datePublished: pubdate?.toISOString(),
+    dateModified: (moddate || pubdate)?.toISOString(),
+    image: ogImageUrl,
+    url: Astro.url.href,
+    publisher: {
+      "@type": "Person",
+      name: SITE.author,
+      url: SITE.profile,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": Astro.url.href,
+    },
+    inLanguage: SITE.lang,
+  };
+} else if (pageType === "list") {
+  // CollectionPage schema for list pages
+  jsonLd = {
+    ...jsonLd,
+    "@type": "CollectionPage",
+    name: title,
+    description: description,
+    url: Astro.url.href,
+    inLanguage: SITE.lang,
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE.title,
+      url: SITE.website,
+    },
+  };
+}
 ---
 
 <!doctype html>
@@ -44,22 +111,21 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.url.origin).href : new URL('
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+
+    <!-- SEO -->
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <!-- Open Graph -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:type" content={pageType === "home" ? "website" : "article"} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:url" content={Astro.url.href} />
-    <meta property="description" content={description} />
     <meta property="og:description" content={description} />
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
-    {
-      keywords.length > 0 && (
-        <meta property="keywords" content={keywords.join(", ")} />
-      )
-    }
-    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
 
     <ClientRouter />
 
@@ -68,11 +134,32 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.url.origin).href : new URL('
     {/* @ts-ignore */}
     <Font cssVariable="--font-libertinus" preload />
 
-    <script is:inline src="/toggle-theme.js"></script>
+    <!-- 预加载中文字体 -->
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
+      rel="preload"
+      href="https://cdn.jsdelivr.net/gh/yihui/cron/fonts/SourceHanSerifCN-Regular-yihui.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
     />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/gh/yihui/cron/fonts/AR-PL-KaitiM-GB-yihui.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    <!-- JSON-LD Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <script is:inline src="/toggle-theme.js"></script>
+    {
+      (katex || SITE.katex) && (
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+      )
+    }
   </head>
 
   <body>
@@ -85,5 +172,4 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.url.origin).href : new URL('
     </main>
     <Footer />
   </body>
-
 </html>

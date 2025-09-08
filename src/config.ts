@@ -9,6 +9,7 @@ export const SITE = {
   dir: "ltr",
   lang: "zh-CN",
   timezone: "Asia/Shanghai",
+  katex: false,
 } as const;
 
 export const SOCIALS = {

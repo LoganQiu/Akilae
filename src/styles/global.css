@@ -1,6 +1,28 @@
 @import "tailwindcss";
 @import "remark-github-blockquote-alert/alert.css";
 
+/* 字体定义 */
+@font-face {
+  font-family: "Source Han Serif CN";
+  src:
+    local("Source Han Serif CN"),
+    local("Source Han Serif SC"),
+    local("Source Han Serif"),
+    local("Noto Serif CJK SC"),
+    url("https://cdn.jsdelivr.net/gh/yihui/cron/fonts/SourceHanSerifCN-Regular-yihui.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FandolKai";
+  src:
+    local("AR PL KaitiM GB"),
+    local("DFKai-SB"),
+    local("FandolKai"),
+    url("https://cdn.jsdelivr.net/gh/yihui/cron/fonts/AR-PL-KaitiM-GB-yihui.woff2") format("woff2");
+  font-display: swap;
+}
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme inline {
@@ -9,9 +31,10 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-article: var(--font-libertinus), Palatino, "Palatino Linotype", Georgia, serif;
+  --font-article:
+    var(--font-libertinus), Palatino, "Palatino Linotype", "SimSun", "Songti SC", "Source Han Serif CN", serif;
   --font-decoration: var(--font-jost), sans-serif;
-  --font-kai: "SimKai", "KaiTi", "Kaiti SC", serif;
+  --font-kai: "SimKai", "KaiTi", "Kaiti SC", "FandolKai", Georgia, serif;
 }
 
 @layer base {
@@ -103,10 +126,10 @@
     @apply text-accent;
   }
   blockquote {
-    @apply border-l-4 border-accent pl-4 italic my-4 font-kai;
+    @apply border-l-4 border-accent pl-4 my-4 font-kai;
   }
   code {
-    @apply bg-muted/20 p-1 text-sm tracking-normal;
+    @apply bg-muted/20 p-1 tracking-normal text-sm;
   }
   pre {
     @apply border border-border my-4 p-2 rounded-md;
@@ -173,6 +196,16 @@
     @apply border-t-2 border-dotted border-muted mx-12 mt-12;
     h2 {
       @apply hidden;
+    }
+  }
+  /* 脚注引用样式 */
+  a[data-footnote-ref] {
+    @apply no-underline;
+    &::before {
+      content: "[";
+    }
+    &::after {
+      content: "]";
     }
   }
 }

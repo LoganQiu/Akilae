@@ -1,8 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
-import SingleLayout from "../../layouts/SingleLayout.astro";
-import Meta from "../../components/Meta.astro";
-import { getPostPath, getSlugFromPath } from "../../utils/getPostPath";
+import SingleLayout from "@/layouts/SingleLayout.astro";
+import Meta from "@/components/Meta.astro";
+import { getPostPath, getSlugFromPath } from "@/utils/getPostPath";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -48,13 +48,13 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
   title={entry.data.title}
   subtitle={entry.data.subtitle}
   description={entry.data.desc || entry.data.subtitle}
-  keywords={entry.data.tags}
   author={entry.data.author}
   pubdate={entry.data.pubdate}
   moddate={entry.data.moddate}
   prevPost={prevPost}
   nextPost={nextPost}
   ogImage={ogImageUrl}
+  katex={entry.data.katex}
 >
   <article>
     <h1>

@@ -1,8 +1,8 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
-import { getPostPath } from '../utils/getPostPath';
-import { SITE } from '../config';
+import { getPostPath } from '@/utils/getPostPath';
+import { SITE } from '@/config';
 
 export async function GET(context: APIContext) {
   const blogPosts = await getCollection('blog', ({ data }) => !data.draft);

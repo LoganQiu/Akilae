@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import ListLayout from '../layouts/ListLayout.astro';
-import { getPostPath } from '../utils/getPostPath';
+import ListLayout from '@/layouts/ListLayout.astro';
+import { getPostPath } from '@/utils/getPostPath';
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 const sortedPosts = blogPosts.sort((a, b) => {
