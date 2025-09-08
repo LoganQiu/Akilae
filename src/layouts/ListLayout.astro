@@ -1,22 +1,15 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import BaseLayout from "./BaseLayout.astro";
 
 export interface Props {
   title?: string;
   subtitle?: string;
   description?: string;
-  keywords?: string[];
 }
 
-const { title, subtitle, description, keywords } = Astro.props;
+const { title, subtitle, description } = Astro.props;
 ---
 
-<BaseLayout 
-  title={title} 
-  subtitle={subtitle} 
-  description={description} 
-  keywords={keywords}
-  pageType="list"
->
+<BaseLayout title={title} subtitle={subtitle} description={description} pageType="list">
   <slot />
 </BaseLayout>

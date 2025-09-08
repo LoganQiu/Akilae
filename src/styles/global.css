@@ -1,18 +1,6 @@
 @import "tailwindcss";
 @import "remark-github-blockquote-alert/alert.css";
 
-/* 字体定义 */
-@font-face {
-  font-family: "Source Han Serif CN";
-  src:
-    local("Source Han Serif CN"),
-    local("Source Han Serif SC"),
-    local("Source Han Serif"),
-    local("Noto Serif CJK SC"),
-    url("https://cdn.jsdelivr.net/gh/yihui/cron/fonts/SourceHanSerifCN-Regular-yihui.woff2") format("woff2");
-  font-display: swap;
-}
-
 @font-face {
   font-family: "FandolKai";
   src:
@@ -31,8 +19,7 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-article:
-    var(--font-libertinus), Palatino, "Palatino Linotype", "SimSun", "Songti SC", "Source Han Serif CN", serif;
+  --font-article: var(--font-libertinus), Palatino, "Palatino Linotype", "SimSun", "Songti SC", "Noto Serif SC", serif;
   --font-decoration: var(--font-jost), sans-serif;
   --font-kai: "SimKai", "KaiTi", "Kaiti SC", "FandolKai", Georgia, serif;
 }
