@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { SITE } from "./config";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/blog" }),
@@ -7,7 +8,7 @@ const blog = defineCollection({
     title: z.string(),
     subtitle: z.string().optional(),
     desc: z.string().optional(),
-    author: z.string().optional(),
+    author: z.string().default(SITE.author),
     slug: z.string(),
     pubdate: z.date(),
     moddate: z.date().optional(),

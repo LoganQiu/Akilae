@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import 'remark-github-blockquote-alert/alert.css';
+@import "remark-github-blockquote-alert/alert.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -9,9 +9,9 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-article: var(--font-libertinus), serif;
+  --font-article: var(--font-libertinus), Palatino, "Palatino Linotype", Georgia, serif;
   --font-decoration: var(--font-jost), sans-serif;
-  --font-kai: "Georgia", "SimKai", "KaiTi", "Kaiti SC", serif;
+  --font-kai: "SimKai", "KaiTi", "Kaiti SC", serif;
 }
 
 @layer base {
@@ -35,8 +35,7 @@
     @apply overflow-y-auto scroll-smooth;
   }
   body {
-    @apply
-      min-h-dvh relative flex flex-col bg-background text-foreground
+    @apply min-h-dvh relative flex flex-col bg-background text-foreground
       md:px-8 md:py-8
       lg:min-h-[calc(100dvh-2rem)] lg:mx-[calc((100vw-62rem)/2)] lg:my-4;
   }
@@ -57,13 +56,13 @@
     @apply border-muted;
   }
   article {
-      @apply my-8 tracking-wide
+    @apply my-8 tracking-wide;
   }
   h1 {
     @apply text-4xl my-8 font-bold relative;
   }
   h1::before {
-    content: '❧';
+    content: "❧";
     @apply absolute -z-10 -top-20 text-muted font-normal text-[6em] opacity-20;
   }
   h2 {
@@ -104,7 +103,7 @@
     @apply text-accent;
   }
   blockquote {
-    @apply border-l-4 border-accent pl-4 italic my-4;
+    @apply border-l-4 border-accent pl-4 italic my-4 font-kai;
   }
   code {
     @apply bg-muted/20 p-1 text-sm tracking-normal;
@@ -114,7 +113,8 @@
   }
   table {
     @apply block my-6 text-sm mx-auto whitespace-nowrap overflow-x-auto max-w-fit;
-    th, td {
+    th,
+    td {
       @apply border border-border p-2;
     }
     code {
@@ -154,7 +154,6 @@
   html[data-theme="light"] .astro-code {
     @apply bg-(--shiki-light-bg) text-(--shiki-light) [&_span]:text-(--shiki-light);
   }
-
   html[data-theme="dark"] .astro-code {
     @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
   }

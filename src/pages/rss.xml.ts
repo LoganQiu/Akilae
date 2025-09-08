@@ -2,6 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 import { getPostPath } from '../utils/getPostPath';
+import { SITE } from '../config';
 
 export async function GET(context: APIContext) {
   const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -12,9 +13,9 @@ export async function GET(context: APIContext) {
   });
   
   return rss({
-    title: 'A Hugo theme inspired by paged.js',
-    description: 'A website built through Astro with the hugo-paged inspired theme.',
-    site: context.site || 'https://example.com',
+    title: SITE.title,
+    description: SITE.desc,
+    site: context.site || SITE.website,
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubdate,
@@ -23,6 +24,6 @@ export async function GET(context: APIContext) {
       author: post.data.author,
       categories: [...(post.data.categories || []), ...(post.data.tags || [])]
     })),
-    customData: `<language>en-us</language>`,
+    customData: `<language>${SITE.lang}</language>`,
   });
 }

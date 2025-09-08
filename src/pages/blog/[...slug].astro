@@ -41,6 +41,7 @@ export async function getStaticPaths() {
 
 const { entry, prevPost, nextPost } = Astro.props;
 const { Content } = await render(entry);
+const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
 ---
 
 <SingleLayout
@@ -48,8 +49,12 @@ const { Content } = await render(entry);
   subtitle={entry.data.subtitle}
   description={entry.data.desc || entry.data.subtitle}
   keywords={entry.data.tags}
+  author={entry.data.author}
+  pubdate={entry.data.pubdate}
+  moddate={entry.data.moddate}
   prevPost={prevPost}
   nextPost={nextPost}
+  ogImage={ogImageUrl}
 >
   <article>
     <h1>

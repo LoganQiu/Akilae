@@ -7,11 +7,15 @@ export interface Props {
   subtitle?: string;
   description?: string;
   keywords?: string[];
+  author?: string;
+  pubdate?: Date;
+  moddate?: Date | null;
   prevPost?: any;
   nextPost?: any;
+  ogImage?: string;
 }
 
-const { title, subtitle, description, keywords, prevPost, nextPost } = Astro.props;
+const { title, subtitle, description, keywords, author, pubdate, moddate, prevPost, nextPost, ogImage } = Astro.props;
 ---
 
 <BaseLayout
@@ -19,7 +23,11 @@ const { title, subtitle, description, keywords, prevPost, nextPost } = Astro.pro
   subtitle={subtitle}
   description={description}
   keywords={keywords}
+  author={author}
+  pubdate={pubdate}
+  moddate={moddate}
   pageType="single"
+  ogImage={ogImage}
 >
 
     <slot />

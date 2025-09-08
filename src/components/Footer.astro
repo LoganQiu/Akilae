@@ -1,10 +1,11 @@
 ---
+import { SITE } from '../config';
 const year = new Date().getFullYear();
 ---
 
 <footer class="max-w-app mx-auto px-4 pb-4 w-full">
   <div class="flex justify-between pt-2 border-t">
-    <span>&copy; <a href="https://yihui.org">Chenke Qiu</a> 2023~{year}</span>
+    <span>&copy; <a href={SITE.profile}>{SITE.author}</a> 2023~{year}</span>
     <div class="flex gap-2">
       <a href="/categories">Categories</a>
       ·
