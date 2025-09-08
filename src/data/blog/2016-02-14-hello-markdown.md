@@ -5,6 +5,7 @@ author: Yihui Xie
 slug: "plain-markdown-post"
 pubdate: 2016-02-14
 katex: true
+pin: 10
 categories:
   - Example
   - Hugo

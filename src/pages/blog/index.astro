@@ -8,6 +8,14 @@ const posts = await getCollection('blog', ({ data }) => {
 });
 
 const sortedPosts = posts.sort((a, b) => {
+  // 首先按 pin 降序排序（pin 值大的在前）
+  const pinA = a.data.pin || 0;
+  const pinB = b.data.pin || 0;
+  if (pinA !== pinB) {
+    return pinB - pinA;
+  }
+  
+  // pin 相同时，按日期降序排序
   const dateA = a.data.moddate || a.data.pubdate;
   const dateB = b.data.moddate || b.data.pubdate;
   return new Date(dateB).getTime() - new Date(dateA).getTime();
