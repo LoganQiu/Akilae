@@ -5,6 +5,7 @@ slug: "hello-markdownnn"
 pubdate: 2016-02-15
 categories: ["Example"]
 tags: ["Markdown", "Tutorial"]
+katex: true
 ---
 
 I love **markdown**.
@@ -30,4 +31,6 @@ And tables:
 
 Even math expressions: $x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$
 
-$$x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$$
+$$
+x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}
+$$

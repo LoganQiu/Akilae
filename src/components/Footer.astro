@@ -1,5 +1,5 @@
 ---
-import { SITE } from '@/config';
+import { SITE } from "@/config";
 const year = new Date().getFullYear();
 ---
 
@@ -8,8 +8,10 @@ const year = new Date().getFullYear();
     <span>&copy; <a href={SITE.profile}>{SITE.author}</a> 2023~{year}</span>
     <div class="flex gap-2">
       <a href="/categories">Categories</a>
-      ·
+      &bullet;
       <a href="/tags">Tags</a>
+      &bullet;
+      <a href="/rss.xml">RSS</a>
     </div>
   </div>
 </footer>

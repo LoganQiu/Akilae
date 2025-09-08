@@ -57,7 +57,7 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
   katex={entry.data.katex}
 >
   <article>
-    <h1>
+    <h1 transition:name={`blog-title-${entry.data.slug}`}>
       {entry.data.title}
       {
         entry.data.subtitle && (
@@ -68,6 +68,7 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
       }
     </h1>
     <Meta
+      transition:name={`blog-meta-${entry.data.slug}`}
       pubdate={entry.data.pubdate}
       moddate={entry.data.moddate}
       categories={entry.data.categories}

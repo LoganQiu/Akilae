@@ -8,6 +8,7 @@ pubdate: 2015-07-23
 moddate: 2023-11-20
 categories: ["Example", "Lorem Ipsum"]
 tags: ["Markdown"]
+katex: true
 ---
 
 ## Sample Text

@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGithubAlerts from "remark-github-blockquote-alert";
-import { SITE } from "@/config";
+import { SITE } from "./src/config";
 
 // https://astro.build/config
 export default defineConfig({
