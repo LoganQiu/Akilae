@@ -79,3 +79,25 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
     <Content />
   </article>
 </SingleLayout>
+
+<script>
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4")
+    );
+    for (const heading of headings) {
+      if (!heading.id) continue;
+      
+      (heading as HTMLElement).style.cursor = "pointer";
+      heading.addEventListener("click", () => {
+        const url = new URL(window.location.href);
+        url.hash = heading.id;
+        window.history.replaceState({}, "", url.href);
+        heading.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  }
+  
+  document.addEventListener("DOMContentLoaded", addHeadingLinks);
+  document.addEventListener("astro:page-load", addHeadingLinks);
+</script>

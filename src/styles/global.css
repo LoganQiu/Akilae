@@ -84,6 +84,17 @@
   h4 {
     @apply text-xl my-6 font-bold;
   }
+  h2::before,
+  h3::before,
+  h4::before {
+    content: "# ";
+    @apply text-muted/40 not-italic cursor-pointer;
+  }
+  h2:hover::before,
+  h3:hover::before,
+  h4:hover::before {
+    @apply text-accent;
+  }
   p {
     @apply my-4 leading-6;
   }
@@ -179,6 +190,7 @@
   .markdown-alert-title {
     @apply my-0;
   }
+  /* 脚注底部样式 */
   .footnotes {
     @apply border-t-2 border-dotted border-muted mx-12 mt-12;
     h2 {

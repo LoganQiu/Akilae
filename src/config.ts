@@ -10,4 +10,5 @@ export const SITE = {
   lang: "zh-CN",
   timezone: "Asia/Shanghai",
   katex: false,
+  threshold: 3,
 } as const;

@@ -3,4 +3,3 @@
 ## 👀 Todo
 
 - [] Search(Pagefind)
-- [] ToC Component

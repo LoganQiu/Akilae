@@ -1,4 +1,6 @@
 ---
+import { SITE } from "@/config";
+
 export interface Props {
   headings: Array<{
     depth: number;
@@ -8,7 +10,7 @@ export interface Props {
   threshold?: number;
 }
 
-const { headings, threshold = 3 } = Astro.props;
+const { headings, threshold = SITE.threshold } = Astro.props;
 
 // 过滤掉 h1 标题，只保留 h2-h6
 const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth <= 4);
