@@ -1,12 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import ListLayout from '@/layouts/ListLayout.astro';
+import { getCollection } from "astro:content";
+import ListLayout from "@/layouts/ListLayout.astro";
 
-const posts = await getCollection('blog');
+const posts = await getCollection("blog");
 const tags = new Map<string, number>();
 
-posts.forEach(post => {
-  post.data.tags?.forEach(tag => {
+posts.forEach((post) => {
+  post.data.tags?.forEach((tag) => {
     tags.set(tag, (tags.get(tag) || 0) + 1);
   });
 });
@@ -17,13 +17,13 @@ const sortedTags = Array.from(tags.entries()).sort((a, b) => a[0].localeCompare(
 <ListLayout title="Tags">
   <h1>Tags</h1>
   <ul class="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-    {sortedTags.map(([tag, count]) => (
-      <li>
-        <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>
-          {tag}
-        </a>
-        <span>「{count}」</span>
-      </li>
-    ))}
+    {
+      sortedTags.map(([tag, count]) => (
+        <li>
+          <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, "-")}/`}>{tag}</a>
+          <span>[{count}]</span>
+        </li>
+      ))
+    }
   </ul>
 </ListLayout>
