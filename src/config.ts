@@ -11,9 +11,3 @@ export const SITE = {
   timezone: "Asia/Shanghai",
   katex: false,
 } as const;
-
-export const SOCIALS = {
-  github: "https://github.com/loganqiu",
-  twitter: "",
-  email: "",
-} as const;

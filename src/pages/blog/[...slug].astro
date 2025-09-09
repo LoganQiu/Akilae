@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import SingleLayout from "@/layouts/SingleLayout.astro";
 import Meta from "@/components/Meta.astro";
+import TOC from "@/components/TOC.astro";
 import { getPostPath, getSlugFromPath } from "@/utils/getPostPath";
 
 export async function getStaticPaths() {
@@ -40,7 +41,7 @@ export async function getStaticPaths() {
 }
 
 const { entry, prevPost, nextPost } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
 ---
 
@@ -74,6 +75,7 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
       categories={entry.data.categories}
       tags={entry.data.tags}
     />
+    <TOC headings={headings} />
     <Content />
   </article>
 </SingleLayout>

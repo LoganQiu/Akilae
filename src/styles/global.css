@@ -82,7 +82,7 @@
     @apply text-2xl my-6 font-bold italic;
   }
   h4 {
-    @apply text-xl my-4;
+    @apply text-xl my-6 font-bold;
   }
   p {
     @apply my-4 leading-6;
@@ -193,6 +193,25 @@
     }
     &::after {
       content: "]";
+    }
+  }
+  /* TOC 样式 */
+  .toc {
+    @apply my-2 bg-muted/10 p-4;
+    a {
+      @apply no-underline hover:text-accent relative z-10 leading-8;
+    }
+  }
+  .toc-list {
+    @apply m-0 columns-1 md:columns-2 gap-6;
+    li {
+      @apply break-inside-avoid text-sm my-0;
+    }
+    ul {
+      @apply flex flex-wrap my-0 pl-4;
+    }
+    ul li {
+      @apply mr-4 my-0;
     }
   }
 }

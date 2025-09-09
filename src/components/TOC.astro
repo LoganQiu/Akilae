@@ -1,0 +1,72 @@
+---
+export interface Props {
+  headings: Array<{
+    depth: number;
+    text: string;
+    slug: string;
+  }>;
+  threshold?: number;
+}
+
+const { headings, threshold = 3 } = Astro.props;
+
+// 过滤掉 h1 标题，只保留 h2-h6
+const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth <= 4);
+const shouldShowTOC = tocHeadings.length >= threshold;
+
+// 构建嵌套的 TOC 结构
+function buildToc(headings: typeof tocHeadings) {
+  const toc: any[] = [];
+  const parentHeadings = new Map();
+
+  headings.forEach((h) => {
+    const heading = { ...h, subheadings: [] };
+    parentHeadings.set(heading.depth, heading);
+
+    if (heading.depth === 2) {
+      toc.push(heading);
+    } else {
+      const parent = parentHeadings.get(heading.depth - 1);
+      if (parent) {
+        parent.subheadings.push(heading);
+      }
+    }
+  });
+
+  return toc;
+}
+
+const toc = buildToc(tocHeadings);
+---
+
+{
+  shouldShowTOC && (
+    <nav class="toc">
+      <ul class="toc-list">
+        {toc.map((heading) => (
+          <li>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+            {heading.subheadings.length > 0 && (
+              <ul>
+                {heading.subheadings.map((subheading: any) => (
+                  <li>
+                    <a href={`#${subheading.slug}`}>{subheading.text}</a>
+                    {subheading.subheadings.length > 0 && (
+                      <ul>
+                        {subheading.subheadings.map((subSubheading: any) => (
+                          <li>
+                            <a href={`#${subSubheading.slug}`}>{subSubheading.text}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
