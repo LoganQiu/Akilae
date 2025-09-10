@@ -1,28 +1,6 @@
 @import "tailwindcss";
 @import "remark-github-blockquote-alert/alert.css";
 
-@font-face {
-  font-family: "Noto Serif SC";
-  src: url(../assets/fonts/NotoSerifSC-VariableFont_wght.ttf) format("truetype");
-  font-weight: 400 700;
-  font-style: normal italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "KingHwa";
-  src: url(../assets/fonts/京華老宋体v3.0.ttf) format("truetype");
-  font-weight: 400 700;
-  font-style: normal italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "ChillKai";
-  src: url(../assets/fonts/ChillKai.ttf) format("truetype");
-  font-weight: 400 700;
-  font-style: normal italic;
-  font-display: swap;
-}
-
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme inline {
