@@ -130,18 +130,9 @@ if (pageType === "home") {
     <ClientRouter />
 
     {/* @ts-ignore */}
-    <Font cssVariable="--font-jost" preload />
+    <Font cssVariable="--font-decoration" preload />
     {/* @ts-ignore */}
-    <Font cssVariable="--font-libertinus" preload />
-
-    <!-- 预加载中文字体 -->
-    <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/gh/yihui/cron/fonts/AR-PL-KaitiM-GB-yihui.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
+    <Font cssVariable="--font-article" preload />
 
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <!-- JSON-LD Structured Data -->

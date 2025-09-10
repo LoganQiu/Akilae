@@ -7,8 +7,8 @@ moddate: 2025-06-08
 categories:
   - Misc 杂项
 tags:
+  - blog
   - astro
-draft: true
 ---
 
 ## Sample Text

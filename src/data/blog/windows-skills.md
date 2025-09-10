@@ -79,7 +79,7 @@ pin: 1
 
 提供一些简单的思路：
 
-```Registry
+```txt
 # 右键菜单杂项
 HKEY_CLASSES_ROOT\\*\shellex\ContextMenuHandlers
 HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers

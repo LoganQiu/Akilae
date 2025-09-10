@@ -8,7 +8,7 @@ import { getPostPath, getSlugFromPath } from "@/utils/getPostPath";
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   const sortedPosts = blogEntries
-    .filter(entry => entry.data.draft !== true)
+    .filter((entry) => entry.data.draft !== true)
     .sort((a, b) => {
       const dateA = a.data.moddate || a.data.pubdate;
       const dateB = b.data.moddate || b.data.pubdate;
@@ -19,19 +19,21 @@ export async function getStaticPaths() {
     const postPath = getPostPath(entry);
     const slugParam = getSlugFromPath(postPath);
 
-    const prevPost = index > 0
-      ? {
-          url: getPostPath(sortedPosts[index - 1]),
-          title: sortedPosts[index - 1].data.title,
-        }
-      : null;
+    const prevPost =
+      index > 0
+        ? {
+            url: getPostPath(sortedPosts[index - 1]),
+            title: sortedPosts[index - 1].data.title,
+          }
+        : null;
 
-    const nextPost = index < sortedPosts.length - 1
-      ? {
-          url: getPostPath(sortedPosts[index + 1]),
-          title: sortedPosts[index + 1].data.title,
-        }
-      : null;
+    const nextPost =
+      index < sortedPosts.length - 1
+        ? {
+            url: getPostPath(sortedPosts[index + 1]),
+            title: sortedPosts[index + 1].data.title,
+          }
+        : null;
 
     return {
       params: { slug: slugParam },
@@ -60,13 +62,7 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
   <article>
     <h1 transition:name={`blog-title-${entry.data.slug}`}>
       {entry.data.title}
-      {
-        entry.data.subtitle && (
-          <small class="text-muted font-normal italic">
-            {entry.data.subtitle}
-          </small>
-        )
-      }
+      {entry.data.subtitle && <small class="text-muted font-normal italic">{entry.data.subtitle}</small>}
     </h1>
     <Meta
       transition:name={`blog-meta-${entry.data.slug}`}
@@ -82,12 +78,10 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
 
 <script>
   function addHeadingLinks() {
-    const headings = Array.from(
-      document.querySelectorAll("h2, h3, h4")
-    );
+    const headings = Array.from(document.querySelectorAll("h2, h3, h4"));
     for (const heading of headings) {
       if (!heading.id) continue;
-      
+
       (heading as HTMLElement).style.cursor = "pointer";
       heading.addEventListener("click", () => {
         const url = new URL(window.location.href);
@@ -97,7 +91,7 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
       });
     }
   }
-  
+
   document.addEventListener("DOMContentLoaded", addHeadingLinks);
   document.addEventListener("astro:page-load", addHeadingLinks);
 </script>

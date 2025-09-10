@@ -2,12 +2,24 @@
 @import "remark-github-blockquote-alert/alert.css";
 
 @font-face {
-  font-family: "FandolKai";
-  src:
-    local("AR PL KaitiM GB"),
-    local("DFKai-SB"),
-    local("FandolKai"),
-    url("https://cdn.jsdelivr.net/gh/yihui/cron/fonts/AR-PL-KaitiM-GB-yihui.woff2") format("woff2");
+  font-family: "Noto Serif SC";
+  src: url(../assets/fonts/NotoSerifSC-VariableFont_wght.ttf) format("truetype");
+  font-weight: 400 700;
+  font-style: normal italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KingHwa";
+  src: url(../assets/fonts/京華老宋体v3.0.ttf) format("truetype");
+  font-weight: 400 700;
+  font-style: normal italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ChillKai";
+  src: url(../assets/fonts/ChillKai.ttf) format("truetype");
+  font-weight: 400 700;
+  font-style: normal italic;
   font-display: swap;
 }
 
@@ -19,9 +31,9 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-article: var(--font-libertinus), Palatino, "Palatino Linotype", "SimSun", "Songti SC", "Noto Serif SC", serif;
-  --font-decoration: var(--font-jost), sans-serif;
-  --font-kai: "SimKai", "KaiTi", "Kaiti SC", "FandolKai", Georgia, serif;
+  --font-article: var(--font-article);
+  --font-decoration: var(--font-decoration);
+  --font-kai: "ChillKai", "SimKai", "KaiTi", "Kaiti SC", Georgia, serif;
 }
 
 @layer base {
@@ -130,7 +142,7 @@
     @apply bg-muted/20 p-1 tracking-normal text-sm;
   }
   pre {
-    @apply border border-border my-4 p-2 rounded-md;
+    @apply border border-border my-4 p-4 rounded-md;
   }
   table {
     @apply block my-6 text-sm mx-auto whitespace-nowrap overflow-x-auto max-w-fit;

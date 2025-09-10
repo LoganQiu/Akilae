@@ -4,9 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGithubAlerts from "remark-github-blockquote-alert";
+import Font from "vite-plugin-font";
 import { SITE } from "./src/config";
 
-// https://astro.build/config
 export default defineConfig({
   site: SITE.website,
   integrations: [
@@ -29,26 +29,32 @@ export default defineConfig({
   },
   output: "static",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      Font.vite({
+        scanFiles: ["src/**/*.{astro,js,ts,tsx,jsx,vue}", "src/data/blog/**/*.md"],
+      }),
+    ],
   },
   experimental: {
     fonts: [
       {
         name: "Jost",
-        cssVariable: "--font-jost",
+        cssVariable: "--font-decoration",
         provider: fontProviders.fontsource(),
         weights: [400],
         styles: ["normal"],
         subsets: ["latin"],
+        fallbacks: ["sans-serif"],
       },
       {
         name: "Libertinus Serif",
-        cssVariable: "--font-libertinus",
+        cssVariable: "--font-article",
         provider: fontProviders.fontsource(),
         weights: [400, 700],
         styles: ["normal", "italic"],
         subsets: ["latin"],
-        fallbacks: ["serif"],
+        fallbacks: ["KingHwa", "Palatino", "Palatino Linotype", "SimSun", "Songti SC", "serif"],
       },
     ],
   },
