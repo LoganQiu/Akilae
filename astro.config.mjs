@@ -1,5 +1,6 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -9,12 +10,14 @@ import { SITE } from "./src/config";
 
 export default defineConfig({
   site: SITE.website,
+
   integrations: [
     sitemap({
       changefreq: "weekly",
       filter: (page) => !page.includes("/404"),
     }),
   ],
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -27,7 +30,11 @@ export default defineConfig({
     remarkPlugins: [remarkMath, remarkGithubAlerts],
     rehypePlugins: [rehypeKatex],
   },
+
   output: "static",
+
+  adapter: cloudflare(),
+
   vite: {
     plugins: [
       tailwindcss(),
@@ -36,6 +43,7 @@ export default defineConfig({
       }),
     ],
   },
+
   experimental: {
     fonts: [
       {
