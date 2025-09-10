@@ -59,15 +59,40 @@ export default async (post) => {
                   },
                   children: [
                     {
-                      type: "p",
+                      type: "div",
                       props: {
                         style: {
-                          fontSize: 72,
-                          fontWeight: "bold",
-                          maxHeight: "84%",
+                          flex: "1",
+                          display: "flex",
+                          flexDirection: "column",
                           overflow: "hidden",
                         },
-                        children: post.data.title,
+                        children: [
+                          {
+                            type: "p",
+                            props: {
+                              style: {
+                                fontSize: 72,
+                                fontWeight: "bold",
+                                overflow: "hidden",
+                                margin: 0,
+                              },
+                              children: post.data.title,
+                            },
+                          },
+                          ...(post.data.desc ? [{
+                            type: "p",
+                            props: {
+                              style: {
+                                fontSize: 36,
+                                color: "#666",
+                                overflow: "hidden",
+                                margin: "16px 0 0 0",
+                              },
+                              children: post.data.desc,
+                            },
+                          }] : []),
+                        ],
                       },
                     },
                     {
@@ -129,7 +154,7 @@ export default async (post) => {
       height: 630,
       embedFont: true,
       fonts: await loadGoogleFonts(
-        post.data.title + (post.data.desc || post.data.subtitle || "") + post.data.author + SITE.title,
+        "by " + post.data.title + (post.data.desc || post.data.subtitle || "") + post.data.author + SITE.title,
       ),
     },
   );
