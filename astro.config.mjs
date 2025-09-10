@@ -59,7 +59,7 @@ export default defineConfig({
         weights: [400, 700],
         styles: ["normal", "italic"],
         subsets: ["latin"],
-        fallbacks: ["KingHwa", "Palatino", "Palatino Linotype", "SimSun", "Songti SC", "serif"],
+        fallbacks: ["KingHwaOldSong", "Palatino", "Palatino Linotype", "Noto Serif SC", "SimSun", "Songti SC", "serif"],
       },
     ],
   },
