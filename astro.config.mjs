@@ -4,7 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGithubAlerts from "remark-github-blockquote-alert";
-import Font from "vite-plugin-font";
 import { SITE } from "./src/config";
 
 export default defineConfig({
@@ -21,7 +20,7 @@ export default defineConfig({
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",
-        dark: "catppuccin-mocha",
+        dark: "ayu-dark",
       },
       wrap: false,
       defaultColor: false,
@@ -33,19 +32,14 @@ export default defineConfig({
   output: "static",
 
   vite: {
-    plugins: [
-      tailwindcss(),
-      Font.vite({
-        scanFiles: ["src/**/*.{astro,js,ts,tsx,jsx,vue}", "src/data/blog/**/*.md"],
-      }),
-    ],
+    plugins: [tailwindcss()],
   },
 
   experimental: {
     fonts: [
       {
         name: "Jost",
-        cssVariable: "--font-decoration",
+        cssVariable: "--font-Jost",
         provider: fontProviders.fontsource(),
         weights: [400],
         styles: ["normal"],
@@ -54,7 +48,7 @@ export default defineConfig({
       },
       {
         name: "Libertinus Serif",
-        cssVariable: "--font-article",
+        cssVariable: "--font-Libertinus",
         provider: fontProviders.fontsource(),
         weights: [400, 700],
         styles: ["normal", "italic"],

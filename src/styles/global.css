@@ -9,9 +9,9 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-article: "KingHwaOldSong", var(--font-article), "Noto Serif SC", "serif";
-  --font-decoration: var(--font-decoration);
-  --font-kai: "ChillKai", "SimKai", "KaiTi", "Kaiti SC", Georgia, serif;
+  --font-article: var(--font-Libertinus), "Noto Serif SC", serif;
+  --font-decoration: var(--font-Jost);
+  --font-kai: "SimKai", "KaiTi", "Kaiti SC", Georgia, serif;
 }
 
 @layer base {
@@ -117,10 +117,10 @@
     @apply border-l-4 border-accent pl-4 my-4 font-kai;
   }
   code {
-    @apply bg-muted/20 p-1 tracking-normal text-sm;
+    @apply bg-muted/20 p-1 tracking-normal text-xs;
   }
   pre {
-    @apply border border-border my-4 p-4 rounded-md;
+    @apply border border-border my-4 p-4 leading-4;
   }
   table {
     @apply block my-6 text-sm mx-auto whitespace-nowrap overflow-x-auto max-w-fit;

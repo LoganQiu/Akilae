@@ -3,3 +3,4 @@
 ## 👀 Todo
 
 - [] Search(Pagefind)
+- [] ogImage bug
