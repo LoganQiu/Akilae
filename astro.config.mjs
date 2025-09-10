@@ -35,6 +35,8 @@ export default defineConfig({
 
   adapter: cloudflare(),
 
+  imageService: "compile",
+
   vite: {
     plugins: [
       tailwindcss(),
