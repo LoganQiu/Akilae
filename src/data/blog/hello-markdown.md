@@ -9,6 +9,7 @@ categories:
 tags:
   - blog
   - astro
+katex: true
 ---
 
 ## Sample Text
