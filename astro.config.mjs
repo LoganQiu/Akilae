@@ -1,6 +1,5 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -32,10 +31,6 @@ export default defineConfig({
   },
 
   output: "static",
-
-  adapter: cloudflare(),
-
-  imageService: "compile",
 
   vite: {
     plugins: [
