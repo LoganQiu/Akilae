@@ -1,6 +1,7 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import expressiveCode from "astro-expressive-code";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGithubAlerts from "remark-github-blockquote-alert";
@@ -14,17 +15,33 @@ export default defineConfig({
       changefreq: "weekly",
       filter: (page) => !page.includes("/404"),
     }),
+    expressiveCode({
+      themes: ['catppuccin-latte', 'monokai'],
+      themeCssSelector: (theme) => {
+        if (theme.name === 'catppuccin-latte') return "[data-theme='light']";
+        if (theme.name === 'monokai') return "[data-theme='dark']";
+        return ':root';
+      },
+      wrap: false,
+      styleOverrides: {
+        borderColor: "var(--color-border)",
+        borderWidth: "1px",
+        codeFontFamily: "var(--font-code)",
+        codeFontSize: "0.75rem",
+        codePaddingInline: "1.5rem",
+      },
+    })
   ],
 
   markdown: {
-    shikiConfig: {
-      themes: {
-        light: "catppuccin-latte",
-        dark: "plastic",
-      },
-      wrap: false,
-      defaultColor: false,
-    },
+    // shikiConfig: {
+    //   themes: {
+    //     light: "catppuccin-latte",
+    //     dark: "plastic",
+    //   },
+    //   wrap: false,
+    //   defaultColor: false,
+    // },
     remarkPlugins: [remarkMath, remarkGithubAlerts],
     rehypePlugins: [rehypeKatex],
   },

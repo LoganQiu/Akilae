@@ -164,7 +164,7 @@
     @apply hidden md:block absolute -z-10 border-background top-6 left-6 right-6 bottom-6 border-[1.75rem];
   }
   /* ===== Code Blocks & Syntax Highlighting ===== */
-  .astro-code code {
+  /* .astro-code code {
     @apply bg-inherit p-0;
   }
   html[data-theme="light"] .astro-code {
@@ -172,7 +172,7 @@
   }
   html[data-theme="dark"] .astro-code {
     @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
-  }
+  } */
 }
 
 @layer utilities {
@@ -184,6 +184,9 @@
   }
   .markdown-alert-title {
     @apply my-0;
+  }
+  .expressive-code {
+    @apply my-4;
   }
   /* 脚注底部样式 */
   .footnotes {
