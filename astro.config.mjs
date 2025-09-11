@@ -20,7 +20,7 @@ export default defineConfig({
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",
-        dark: "ayu-dark",
+        dark: "plastic",
       },
       wrap: false,
       defaultColor: false,

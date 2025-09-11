@@ -11,7 +11,7 @@
   --color-border: var(--border);
   --font-article: var(--font-Libertinus), "Noto Serif SC", serif;
   --font-decoration: var(--font-Jost);
-  --font-kai: "SimKai", "KaiTi", "Kaiti SC", Georgia, serif;
+  --font-kai: "SimKai", "KaiTi", "STKaiti", "Kaiti SC", Georgia, serif;
 }
 
 @layer base {
@@ -142,8 +142,10 @@
     @apply text-sm text-muted mt-2;
   }
   kbd {
-    @apply inline-block px-1 font-mono text-sm hover:translate-px ring-1 ring-muted rounded-sm
-           shadow-[2px_2px_1px_rgba(0,0,0,0.6)] dark:shadow-[2px_2px_1px_rgba(255,255,255,0.6)];
+    @apply inline-block px-1 font-mono text-sm border-1 rounded-sm
+           border-[rgba(0,0,0,0.6)] shadow-[inset_0px_-1px_0px_rgba(0,0,0,0.6)]
+           dark:border-[rgba(255,255,255,0.6)] dark:shadow-[inset_0px_-1px_0px_rgba(255,255,255,0.6)]
+           hover:shadow-none hover:translate-y-px;
   }
 }
 
