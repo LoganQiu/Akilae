@@ -44,7 +44,6 @@ export default defineConfig({
         weights: [400],
         styles: ["normal"],
         subsets: ["latin"],
-        fallbacks: ["sans-serif"],
       },
       {
         name: "Libertinus Serif",
@@ -53,7 +52,7 @@ export default defineConfig({
         weights: [400, 700],
         styles: ["normal", "italic"],
         subsets: ["latin"],
-        fallbacks: ["Palatino", "Palatino Linotype", "SimSun", "Songti SC"],
+        fallbacks: ["Palatino", "Palatino Linotype"],
       },
     ],
   },

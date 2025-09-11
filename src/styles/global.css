@@ -1,3 +1,5 @@
+@import url("https://fonts.zeratulqiu.me/KingHwaOldSong/result.css");
+@import url("https://fonts.zeratulqiu.me/ChillKai/result.css");
 @import "tailwindcss";
 @import "remark-github-blockquote-alert/alert.css";
 
@@ -9,9 +11,9 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-article: var(--font-Libertinus), "Noto Serif SC", serif;
-  --font-decoration: var(--font-Jost);
-  --font-kai: "SimKai", "KaiTi", "STKaiti", "Kaiti SC", Georgia, serif;
+  --font-article: var(--font-Libertinus),"KingHwaOldSong", "SimSun", "Songti SC", serif;
+  --font-decoration: var(--font-Jost), sans-serif;
+  --font-kai: "ChillKai", "SimKai", "KaiTi", "STKaiti", "Kaiti SC", Georgia, serif;
 }
 
 @layer base {
