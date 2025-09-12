@@ -15,16 +15,16 @@ tags:
 本主题的灵感来自 [hugo-paged](https://github.com/yihui/hugo-paged)，而 [Yihui](https://yihui.org/) 说他是完全受 [paged.js](https://pagedjs.org/) 启发才想到写此主题。主要的样式完全模仿如下（用 Tailwind 重写，但是总感觉差点感觉，无法做到原来一样，技术有限先这样吧），然后在一些诸如主题切换逻辑、Open Graph 等功能大量借鉴 [astro-pager](https://github.com/satnaing/astro-paper)，同时在一些细节上进行了优化。
 
 ```css
-  /* ==== paged.js style ==== */
-  .crop-h {
-    @apply hidden md:block absolute -z-10 top-12 bottom-12 left-0 right-0 border-y border-foreground;
-  }
-  .crop-v {
-    @apply hidden md:block absolute -z-10 top-0 bottom-0 left-12 right-12 border-x border-foreground;
-  }
-  .crop-c {
-    @apply hidden md:block absolute -z-10 border-background top-6 left-6 right-6 bottom-6 border-[1.75rem];
-  }
+/* ==== paged.js style ==== */
+.crop-h {
+  @apply hidden md:block absolute -z-10 top-12 bottom-12 left-0 right-0 border-y border-foreground;
+}
+.crop-v {
+  @apply hidden md:block absolute -z-10 top-0 bottom-0 left-12 right-12 border-x border-foreground;
+}
+.crop-c {
+  @apply hidden md:block absolute -z-10 border-background top-6 left-6 right-6 bottom-6 border-[1.75rem];
+}
 ```
 
 现在讲讲具体细节，我不喜欢黑箱，并且博客是以中文为主的内容，遂决定不使用 [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)，那就只有手搓了一套样式，可以在我的博客代码仓库中的 `global.css` 中找到。我相当欣赏 [赫蹏（hètí）](https://github.com/sivan/heti)，不过目前并未在项目中使用，要是以后附庸文雅了回头再看看。
