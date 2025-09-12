@@ -64,7 +64,7 @@
   }
   h1::before {
     content: "❧";
-    @apply absolute -z-10 -top-20 text-muted font-normal text-[6em] opacity-20;
+    @apply absolute -z-10 -top-20 text-muted font-normal text-[6em] opacity-20 pointer-events-none;
   }
   h2 {
     @apply text-2xl my-8 font-bold border-b border-muted border-dashed;
@@ -207,7 +207,7 @@
   .toc {
     @apply my-2 bg-muted/10 p-4;
     a {
-      @apply no-underline hover:text-accent relative z-10 leading-8;
+      @apply no-underline hover:text-accent leading-8;
     }
   }
   .toc-list {
