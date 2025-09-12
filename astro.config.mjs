@@ -13,7 +13,6 @@ export default defineConfig({
   integrations: [
     sitemap({
       changefreq: "weekly",
-      filter: (page) => !page.includes("/404"),
     }),
     expressiveCode({
       themes: ['catppuccin-latte', 'monokai'],
@@ -24,7 +23,6 @@ export default defineConfig({
       },
       wrap: false,
       styleOverrides: {
-        borderColor: "var(--color-border)",
         borderWidth: "1px",
         codeFontFamily: "var(--font-code)",
         codeFontSize: "0.75rem",
